@@ -137,7 +137,6 @@ footer{position:fixed;bottom:0;left:0;right:0;z-index:5;text-align:center;font-s
   <button data-p="themes">主题</button>
   <button data-p="practice">练习</button>
   <button data-p="spreads">牌阵</button>
-  <button data-p="distill">蒸馏</button>
   <button data-p="mine">我的</button>
 </nav>
 
@@ -184,80 +183,16 @@ footer{position:fixed;bottom:0;left:0;right:0;z-index:5;text-align:center;font-s
   </div>
   <div class="panel">
     <h2>✦ 学习路径 · 六个阶段 ✦</h2>
+    <p style="color:var(--muted);font-size:12px">本路径为工作台按八书体系编排；读书路线、获客与咨询心法等融入内容来自抖音视频蒸馏，各 panel 内已标注原视频。</p>
     <div id="path-body"></div>
   </div>
-</section>
-
-<!-- 牌库 -->
-<section class="page" id="p-deck">
-  <div class="panel">
-    <h2>✦ 78 牌库 ✦</h2>
-    <div class="search"><input type="text" id="deck-q" placeholder="搜索牌名 / 关键词…" oninput="renderDeck()"></div>
-    <div class="filters" id="deck-filters">
-      <button data-f="all" class="on">全部</button>
-      <button data-f="major">大阿卡纳</button>
-      <button data-f="wands">权杖</button>
-      <button data-f="cups">圣杯</button>
-      <button data-f="swords">宝剑</button>
-      <button data-f="pentacles">钱币</button>
-    </div>
-    <div class="grid" id="deck-grid"></div>
-  </div>
-</section>
-
-<!-- 主题 -->
-<section class="page" id="p-themes">
-  <div class="panel">
-    <h2>✦ 主题卡 · 融会贯通 ✦</h2>
-    <div id="theme-list"></div>
-  </div>
-</section>
-
-<!-- 练习 -->
-<section class="page" id="p-practice">
-  <div class="panel">
-    <h2>✦ 练习场 ✦</h2>
-    <div class="row">
-      <button class="btn btn-ghost btn-sm" onclick="startFlash()">单卡速记</button>
-      <button class="btn btn-ghost btn-sm" onclick="startCombo(2)">双牌组合</button>
-      <button class="btn btn-ghost btn-sm" onclick="startCombo(3)">三牌组合</button>
-      <button class="btn btn-ghost btn-sm" onclick="startQuiz()">问答挑战</button>
-      <button class="btn btn-ghost btn-sm" onclick="showMistakes()">错题本 <span id="mist-count"></span></button>
-    </div>
-    <div id="practice-box" style="margin-top:14px">
-      <p style="color:var(--muted)">选一种练习开始。单卡练记忆，组合练解读，问答练应用。</p>
-    </div>
-  </div>
-</section>
-
-<!-- 牌阵 -->
-<section class="page" id="p-spreads">
-  <div class="panel">
-    <h2>✦ 牌阵占卜 ✦</h2>
-    <div id="spread-list"></div>
-    <div id="spread-play" style="display:none"></div>
-  </div>
-</section>
-
-<!-- 蒸馏 -->
-<section class="page" id="p-distill">
-  <div class="panel">
+<div class="panel">
     <h2>✦ 蒸馏 · 读书路线 ✦</h2>
     <div class="log-item"><small>入门</small>《塔罗葵花宝典》——大众普及读物，先把兴趣点起来，不急着啃大部头。</div>
     <div class="log-item"><small>进阶</small>蓝皮书、紫皮书——体系化教材，把牌义框架立起来。</div>
     <div class="log-item"><small>经典</small>《78度智慧》——深度牌义。本台 22 篇大阿卡纳长文即提炼自它与《白皮书》，可对照读。</div>
     <div class="log-item"><small>工具</small>《塔罗解牌字典》——78 张牌正逆位核心含义速查，解牌卡壳时翻它。</div>
     <p style="color:var(--muted);font-size:12px">来源：抖音 @椰汁Bel《塔罗读书路线》 <a href="https://www.douyin.com/video/7666695412149362033" target="_blank" style="color:var(--gold2)">原视频</a></p>
-  </div>
-  <div class="panel">
-    <h2>✦ 蒸馏 · 深度分析三件套 ✦</h2>
-    <div class="log-item"><small>其一</small>牌阵选择——先按问题选对牌阵，再谈解读；阵不对，后面全是无用功。</div>
-    <div class="log-item"><small>其二</small>元素分析——看整组牌的元素配比，判断能量往哪边走，而不是逐张孤立解。</div>
-    <div class="log-item"><small>其三</small>深入解读——落到问卜者的真实处境里，不背书本牌意。</div>
-    <div class="log-item"><small>学法</small>试听课用情感案例（00:57–15:13）＋商业案例（15:13–31:47）双轨精讲；建议学完路径的实战阶段后回看，对照自己的分析找差距。</div>
-    <div class="log-item"><small>提醒</small>给自己占卜容易"当局者迷"，重要问题找人互占更准。</div>
-    <div class="log-item"><small>钩子</small>宫廷牌可以对应星座（其正式课内容），先记下，进阶时展开。</div>
-    <p style="color:var(--muted);font-size:12px">来源：抖音 @存渊Tarot《35分钟塔罗深度分析课》 <a href="https://www.douyin.com/video/7677568021472438762" target="_blank" style="color:var(--gold2)">原视频</a></p>
   </div>
   <div class="panel">
     <h2>✦ 蒸馏 · 从零获客六步 ✦</h2>
@@ -277,14 +212,74 @@ footer{position:fixed;bottom:0;left:0;right:0;z-index:5;text-align:center;font-s
     <div class="log-item"><small>说</small>忌绝对化表述；顺着对方的意愿沟通，正向引导。</div>
     <p style="color:var(--muted);font-size:12px">来源：抖音 @西玄《真消费才敢说真话》 <a href="https://www.douyin.com/video/7672006010092965172" target="_blank" style="color:var(--gold2)">原视频</a></p>
   </div>
+  </section>
+
+<!-- 牌库 -->
+<section class="page" id="p-deck">
   <div class="panel">
-    <h2>✦ 蒸馏 · 学习站参考 ✦</h2>
-    <div class="log-item"><small>对方蓝图</small>基础体系（元素/数字/星座占星对应）· 78 张牌义 · 录屏课程 · 实占案例库 · 学习方法与分析框架。</div>
-    <div class="log-item"><small>对照本台</small>体系→主题页签，牌义→牌库，课程→路径；唯独"实占案例库"本台还没有——等练习积累厚了，可在练习页签补一个案例复盘区。</div>
-    <div class="log-item"><small>调研洞察</small>它的评论区显示：学习者最想要"牌义＋案例库"，付费偏好一次性买断而非订阅。</div>
-    <p style="color:var(--muted);font-size:12px">来源：抖音 @面包树《塔罗一站式学习网站》 <a href="https://www.douyin.com/video/7677087697986440490" target="_blank" style="color:var(--gold2)">原视频</a></p>
+    <h2>✦ 78 牌库 ✦</h2>
+    <p style="color:var(--muted);font-size:12px;line-height:1.7">牌义来源：本库提炼融合自八本书——《78度智慧》《白皮书》《塔罗全书》《葵花宝典》《其实你已经很塔罗了》《逆位精解》、Joan Bunning《Learning the Tarot》《牌阵》；22 张大阿卡纳另附深度长文，提炼自《78度智慧》×《白皮书》，已在牌详情内标注。</p>
+    <div class="search"><input type="text" id="deck-q" placeholder="搜索牌名 / 关键词…" oninput="renderDeck()"></div>
+    <div class="filters" id="deck-filters">
+      <button data-f="all" class="on">全部</button>
+      <button data-f="major">大阿卡纳</button>
+      <button data-f="wands">权杖</button>
+      <button data-f="cups">圣杯</button>
+      <button data-f="swords">宝剑</button>
+      <button data-f="pentacles">钱币</button>
+    </div>
+    <div class="grid" id="deck-grid"></div>
   </div>
 </section>
+
+<!-- 主题 -->
+<section class="page" id="p-themes">
+  <div class="panel">
+    <h2>✦ 主题卡 · 融会贯通 ✦</h2>
+    <p style="color:var(--muted);font-size:12px">主题内容为八书融合提炼，书目见牌库页。</p>
+    <div id="theme-list"></div>
+  </div>
+</section>
+
+<!-- 练习 -->
+<section class="page" id="p-practice">
+<div class="panel">
+    <h2>✦ 蒸馏 · 深度分析三件套 ✦</h2>
+    <div class="log-item"><small>其一</small>牌阵选择——先按问题选对牌阵，再谈解读；阵不对，后面全是无用功。</div>
+    <div class="log-item"><small>其二</small>元素分析——看整组牌的元素配比，判断能量往哪边走，而不是逐张孤立解。</div>
+    <div class="log-item"><small>其三</small>深入解读——落到问卜者的真实处境里，不背书本牌意。</div>
+    <div class="log-item"><small>学法</small>试听课用情感案例（00:57–15:13）＋商业案例（15:13–31:47）双轨精讲；建议学完路径的实战阶段后回看，对照自己的分析找差距。</div>
+    <div class="log-item"><small>提醒</small>给自己占卜容易"当局者迷"，重要问题找人互占更准。</div>
+    <div class="log-item"><small>钩子</small>宫廷牌可以对应星座（其正式课内容），先记下，进阶时展开。</div>
+    <p style="color:var(--muted);font-size:12px">来源：抖音 @存渊Tarot《35分钟塔罗深度分析课》 <a href="https://www.douyin.com/video/7677568021472438762" target="_blank" style="color:var(--gold2)">原视频</a></p>
+  </div>
+    <div class="panel">
+    <h2>✦ 练习场 ✦</h2>
+    <div class="row">
+      <button class="btn btn-ghost btn-sm" onclick="startFlash()">单卡速记</button>
+      <button class="btn btn-ghost btn-sm" onclick="startCombo(2)">双牌组合</button>
+      <button class="btn btn-ghost btn-sm" onclick="startCombo(3)">三牌组合</button>
+      <button class="btn btn-ghost btn-sm" onclick="startQuiz()">问答挑战</button>
+      <button class="btn btn-ghost btn-sm" onclick="showMistakes()">错题本 <span id="mist-count"></span></button>
+    </div>
+    <div id="practice-box" style="margin-top:14px">
+      <p style="color:var(--muted)">选一种练习开始。单卡练记忆，组合练解读，问答练应用。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 牌阵 -->
+<section class="page" id="p-spreads">
+  <div class="panel">
+    <h2>✦ 牌阵占卜 ✦</h2>
+    <p style="color:var(--muted);font-size:12px">牌阵主要整理自《牌阵》一书及经典牌阵体系。</p>
+    <div id="spread-list"></div>
+    <div id="spread-play" style="display:none"></div>
+  </div>
+</section>
+
+<!-- 蒸馏 -->
+
 
 <!-- 我的 -->
 <section class="page" id="p-mine">
@@ -299,6 +294,13 @@ footer{position:fixed;bottom:0;left:0;right:0;z-index:5;text-align:center;font-s
   <div class="panel">
     <h2>✦ 学习日志 ✦</h2>
     <div id="log-list"><p style="color:var(--muted)">还没有记录。每日一牌和牌阵解读会自动记在这里。</p></div>
+  </div>
+<div class="panel">
+    <h2>✦ 蒸馏 · 学习站参考 ✦</h2>
+    <div class="log-item"><small>对方蓝图</small>基础体系（元素/数字/星座占星对应）· 78 张牌义 · 录屏课程 · 实占案例库 · 学习方法与分析框架。</div>
+    <div class="log-item"><small>对照本台</small>体系→主题页签，牌义→牌库，课程→路径；唯独"实占案例库"本台还没有——等练习积累厚了，可在练习页签补一个案例复盘区。</div>
+    <div class="log-item"><small>调研洞察</small>它的评论区显示：学习者最想要"牌义＋案例库"，付费偏好一次性买断而非订阅。</div>
+    <p style="color:var(--muted);font-size:12px">来源：抖音 @面包树《塔罗一站式学习网站》 <a href="https://www.douyin.com/video/7677087697986440490" target="_blank" style="color:var(--gold2)">原视频</a></p>
   </div>
   <div class="panel">
     <h2>✦ 数据管理 ✦</h2>
@@ -323,7 +325,7 @@ const CARDS=[{"id": 0, "arcana": "major", "name_cn": "愚人", "name_en": "The F
 const THEMES=[{"hook": "同心圆：圆心共通、中圈主流、外圈个人，层层包容。", "id": "t1", "points": ["共通牌义是跨版本跨系统的核心主题，走到哪里都不会改变。", "共通牌义是占卜者之间能彼此沟通的公约数。", "主流牌义是各流派诠释的交集，细节上允许略有分歧。", "如愚人牌：悬崖与十字路口意象不同，方向一致，都算主流。", "个人牌义来自你的亲身经历与联想，只对你一个人有效。", "个人牌义适合自占自解，请人代解容易鸡同鸭讲。", "学习顺序：先立足共通，再参考主流，最后养成个人。"], "quiz": [{"a": "因为代解只能用到共通和主流牌义，你的个人牌义别人没有，鲜明时就会对不上。", "q": "为什么你请网友代解，结果常常隔靴搔痒？"}, {"a": "不必。只吸收能引起共鸣的，看不懂的先放下，不需强记。", "q": "看到一个看不懂的主流牌义，应该硬背吗？"}], "summary": "每张牌有三层牌义：全世界共通的核心、流派相近的主流、只属于自己的个人牌义。", "title": "三层牌义观"}, {"hook": "塔罗牌是会说故事的图画，看得越细记得越多，死背事倍功半。", "id": "t2", "points": ["参考书籍：找会讲牌义推演过程的书，只收引起共鸣的牌义。", "牌面推理：看图说故事，记录第一感觉，这就是你的牌义。", "深入冥想：把自己融入牌面，体验人物情绪，开发直觉。", "比较法：找相似或相反的牌对比，如恋人与恶魔的对照。", "结合法：把两张以上的牌编成一个故事，练解牌整合力。", "练习再练习：先自占，再为亲友占，在实战中解决疑惑。"], "quiz": [{"a": "用牌面推理法：先自己看图说故事并记录，再对照书籍看有何不同。", "q": "刚拿到新牌，还没看任何资料，第一步做什么最好？"}, {"a": "比较法练左脑理性分析，找牌的异同与呼应；结合法练把多张牌合成一个故事。", "q": "比较法和结合法分别练的是什么能力？"}], "summary": "牌义靠联想推演而非死背：参考书籍、牌面推理、冥想、比较、结合、实战练习六法。", "title": "快速记忆牌义六法"}, {"hook": "逆位多半是正位能量被堵住了：压抑、打折、过头、迟到，九式对号入座。", "id": "t3", "points": ["被压抑或否认的情绪：当事人不愿承认的心理状态。", "内在隐性潜能：隐藏的性格面，可选择转正发挥出来。", "减弱或增强：牌义不变，只是程度打折或放大。", "过度或不足：太多或太少，已经到构成困扰的程度。", "时间点差异：才刚开始、快要结束，或事情延迟。", "滥用或误用：能力用错地方，如权力滥用、乱花钱。", "相反义：直接加个不字，但实际很少这样解。", "牌面演绎：看图倒过来有何不同，如圣杯倾倒、钱币掉落。", "前位法：上一张牌的课题还没过关，问题卡在前面。"], "quiz": [{"a": "当事人正经历痛苦的结束却不愿接受，对应第一式被压抑或否认的情绪。", "q": "死神逆位常代表什么心理状态？对应九式哪一式？"}, {"a": "过度或不足式。如钱币骑士勤奋，逆位则变工作狂或整天闲混。", "q": "宫廷牌逆位最常用的解法是哪一式？举例说明。"}], "summary": "逆位是正位能量的变化与补充，不是另一张牌；初学者建议先全用正位解。", "title": "逆位解读九式"}, {"hook": "大牌是天气，小牌是穿衣：天气难改，衣服随你换。", "id": "t4", "points": ["大牌表现抽象精神层面，是命运中难控制的部分，影响长期深远。", "小牌是日常生活具体事件，当事人有能力改变，影响短期较小。", "大牌像寓言与原型，小牌像日常剧本，初学者先学小牌更顺。", "牌阵大牌比例远超正常，就代表问题影响大、当事人难掌控。", "几乎全是小牌：事情影响小、周期短，可改变的空间大。", "正常比例约大牌:小牌=1:2.5，可作为解牌时的参照线。"], "quiz": [{"a": "此事对当事人影响很大且多在内心进行，他能做的其实不多，只能消极等待。", "q": "十张牌的牌阵里出现七张大牌，说明什么？"}], "summary": "大牌是抽象的精神层面、长期深远；小牌是日常具体事件、短期可控。", "title": "大牌 vs 小牌"}, {"hook": "火杖行动、水杯感情、风剑思考、土币物质，大牌是凌驾其上的精神。", "id": "t5", "points": ["权杖=火：行动创造、热情直观，凭本能行事，大胆积极。", "圣杯=水：情感人际、直觉敏感，常说我总觉得，缺点多愁善感。", "宝剑=风：思考心智，也主冲突伤害，理智冷静但显冷漠。", "钱币=土：物质工作、金钱稳定，勤奋踏实，缺点固执贪婪。", "大牌是第五要素精神，超越四要素的抽象层面。", "权杖的直观是我就是知道，圣杯的直觉是不确定的感觉。", "钱币管日常工作交易，权杖管企业扩张开疆辟土。"], "quiz": [{"a": "此事与人际关系纠葛较有关，或当事人多幻想少行动，缺实干成分。", "q": "问工作出现很多圣杯牌，少见权杖钱币，透露什么？"}, {"a": "宫廷牌以性格定义。应说他像火象性格大胆冲动，而非断言星座。", "q": "为什么不能说权杖宫廷牌的人一定是火象星座？"}], "summary": "权杖火、圣杯水、宝剑风、钱币土，大牌是第五要素精神；四牌组各管一个生活面向。", "title": "五要素与四牌组"}, {"hook": "愚人是主角，大牌是他的成长连续剧：身、心、灵三季播完。", "id": "t6", "points": ["一阶是线性故事：愚人从魔术师学外世界，终在世界圆满。", "二阶是上下关联：1-10与11-20编号差十，牌义互相关联。", "如恋人与塔是祝福与惩罚，力量与月亮都是克服负面情绪。", "三阶分三列：1-7显意识身，8-14潜意识心，15-21超意识灵。", "第一列讲世俗关系，第二列转向内省，第三列通往开悟。", "二十二张大牌囊括人类集体潜意识中的共通原型。"], "quiz": [{"a": "编号差十，灵数相关：魔术师是力量的完全开展，正义是力量的理性使用。", "q": "二阶愚人之旅里，魔术师和正义有什么关联？"}], "summary": "0号愚人到21号世界，是灵魂成长的寓言旅程，另有二阶上下关联与三阶身心灵结构。", "title": "愚人之旅"}, {"hook": "1播种2配对3开花4扎根5风雨6分享7拔节8赶路9结果10落叶归根。", "id": "t7", "points": ["1是开始、2是结合：新机会如种子；两股力量合作成事、对立胶着。", "3是初步成果、4是稳定：合作后初见成效，随后恒定但易陷狭窄不满。", "5是冲突、6是分享：四的稳定瓦解；1+2+3圆满后与人分享，防极端。", "7是内省奋斗、8是重新评估：阴性反省、阳性奋战；突破限制再出发。", "9是成果独处、10是完成转化：饱满而孤独；过度有危机，需放手转化。", "同号牌在牌阵中重复出现，暗示事情所处的阶段，如多张一是起头。"], "quiz": [{"a": "三张同号五，冲突失落是症结：行动、感情、思考三线同时瓦解，动荡难免。", "q": "牌阵里同时出现权杖五、圣杯五、宝剑五，该怎么看？"}], "summary": "数字牌1到10是一段发展弧线：开始、结合、成果、稳定、冲突、分享、奋斗、行动、独处、转化。", "title": "数字 1-10 含义"}, {"hook": "一家四口：国王是父亲、王后是母亲、骑士是哥哥、侍从是妹妹。", "id": "t8", "points": ["国王是成熟男性：阳性领导者，精通牌组特质，担社会责任。", "王后是成熟女性：阴性抚育者，分享照顾，重视心灵内在。", "骑士是不成熟年轻人：精力外放、急躁莽撞，也可代表旅行。", "侍从是小孩：好奇学习、开放探索，代表讯息、机会与新开始。", "以性格定义宫廷牌，不以性别年龄星座硬套。", "主流对应：国王火、王后水、骑士风、侍从土，另有争议版本。"], "quiz": [{"a": "不该。应以性格定义：理性冷静、判断精确的人，也可是男性性格中的阴柔面。", "q": "出现宝剑王后，该描述成四十岁以上女性吗？"}], "summary": "四牌组如四个家族，国王王后骑士侍从是家中四位成员，各有成熟度与阴阳分工。", "title": "宫廷牌结构"}, {"hook": "把能怎么办放进问题里：与其问会不会分手，不如问如何改善关系。", "id": "t9", "points": ["塔罗答案是照现况演变而不加改变的结果，随时可因行动改写。", "问如何改善而非会不会发生，把决定权留在自己手里。", "问题越明确答案越明确，笼统的问法只得到笼统答案。", "问短期不问长期：塔罗是占卜非命理，时限约一年。", "只问与自己直接相关的人事，否则准确率跟猜没两样。", "不问过去：已发生无法改变，问了也没有意义。", "不让牌替你做决定，小事也别事事问，等于放弃自由意志。", "健康问题问医生，塔罗只做身心状况检视的参考。"], "quiz": [{"a": "太被动，等于放弃自由意志。改为：我该如何做，才能在今年获得升迁？", "q": "我今年能不能升迁？这个问法有什么问题？怎么改？"}, {"a": "太笼统太长期。塔罗是针对特定问题的短期占卜，不是看一辈子的命理。", "q": "为什么不宜问我这辈子嫁不嫁得出去？"}], "summary": "塔罗给的是不加改变的趋势而非注定；好问题要明确、短期、相关，帮你找到行动方案。", "title": "如何问一个好问题"}, {"hook": "七步口诀：问、静、阵、洗、切、抽、解，心静则灵。", "id": "t10", "points": ["先定问题：在接触牌之前，先确认要问一个有建设性的问题。", "调整环境心情：安静专注，问卜者须真心想解决问题而非测试。", "决定牌阵：简单问题用小牌阵，初学者不要贪大。", "洗牌：目的是取得随机数；麻将式洗得干净且自然带正逆位。", "切牌：必须由问卜者切，反映他对这个问题的心态。", "抽牌：由问卜者亲自抽，得到的是第一手资料。", "解牌：按顺序排阵翻牌，依序解读并整合成故事。", "仪式可有可无：重点是集中精神，别养成不做仪式就心慌的依赖。"], "quiz": [{"a": "切牌反映问卜者心态，抽牌取得第一手资料；经他人之手就成了二手资料。", "q": "为什么切牌和抽牌都要由问卜者亲自来？"}], "summary": "定问题、调心境、选牌阵、洗牌、切牌、抽牌、解牌七步；仪式可有可无，专注才是关键。", "title": "占卜流程"}, {"hook": "解牌如侦探：先看全场比例，再找重复线索，最后串成完整案情。", "id": "t11", "points": ["数大牌小牌比例：正常约1:2.5，大牌多则影响大、当事人难掌控。", "数四牌组比例：权杖行动、圣杯感情、宝剑问题、钱币现实。", "数正逆位比例：逆位多则事态受阻，或事情在隐性层面进行。", "找同号牌：多张同数字暗示阶段，如多张一是起头、多张十近尾声。", "注意相似与相反牌：重复出现是症结，对比明显是矛盾点。", "大牌看位置分量重，逆位指出问题点，都要重点解读。", "最后把所有牌结合成一个完整故事，这是最难也最关键的一步。"], "quiz": [{"a": "感情成分已经很小，问题可能更多是现实、行动或冲突层面的事。", "q": "问感情时一张圣杯都没出现，说明什么？"}, {"a": "两张都有静默被动等待之意，重复出现很可能是问题的症结：当事人太被动。", "q": "牌阵里吊人和女祭司同时出现，该注意什么？"}], "summary": "别逐牌念经：数比例、找同号、看呼应矛盾，最后把全阵合成一个故事。", "title": "解牌秘籍"}, {"hook": "选阵如选镜：小镜照小事，大镜照全局，镜子再大不如照得准。", "id": "t12", "points": ["牌阵由主题、牌数、阵形、位置意义等要素构成，位置意义须紧扣主题。", "1至3张：解决简单问题、日常小事、是非题。", "4到9张：解决九成以上的一般问题，是主力区间。", "10张以上：面对复杂状况，时间充裕时才建议使用。", "专题牌阵各有分工：感情、选择题、时间问题用专用阵。", "牌数不贪多：初学者从1-3张开始，得心应手再升级。", "牌阵可以自创：位置定义明确、紧扣主题就是好牌阵。"], "quiz": [{"a": "二择一牌阵：分别看选甲和选乙的近未来与长期发展，对比后再决定。", "q": "朋友问该选A工作还是B工作，适合用什么牌阵？"}], "summary": "牌阵是舞台、牌是演员；按问题性质选阵，1-3张解小事，4-9张是主力，10张以上解复杂局。", "title": "牌阵导览"}, {"hook": "应期五式由粗到精：数字、星座、限题、历法、旬定，越精越要查表。", "id": "t13", "points": ["塔罗不擅长时间：时限约一年，越久变量越大，算不准。", "大牌数字法：先定单位为天周或月，抽大牌看编号，愚人则不发生。", "大牌星座法：十二张对应星座的大牌看月份，无对应则一年内无。", "问题限制法：直接在问题里加时间，如三个月内可否毕业。", "时间历法：周历7张、月历30张、年历12张，看哪格希望最大。", "小牌时序法：抽到一号牌停，季节定牌组，宫廷定月，小牌定旬。", "算出时间不行动等于白算：应期是配合行动才有意义的。"], "quiz": [{"a": "用大牌数字法：教宗是5号，表示五个月之内可以毕业。", "q": "问何时毕业，以月为单位抽到教宗牌，怎么解？"}, {"a": "这是该法的缺点，会陷入抉择困难；也可能是期限内本就不会发生，硬选会误判。", "q": "时间历法同时好几天都有希望，怎么办？"}], "summary": "塔罗只擅短期应期，约一年为限；五种方法由粗到精，记得应期也要行动配合。", "title": "时间问题小锦囊"}, {"hook": "宫廷牌先问是谁：是我、是他，还是我们性格里的那一面？", "id": "t14", "points": ["先分人物解还是事件解：人物解的概率远大于事件解。", "人物有三种：当事人自己、相关的人、某人的性格面。", "建议位正位：学这张牌的行事作风；逆位：别学这种作风。", "建议位也可指该去咨询的对象，如宝剑国王指专业人士。", "环境位：周遭影响此事的人，或某种群体气氛。", "性格优先于性别年龄：男人可有阴柔面，女人可有阳刚面。", "描述用像某象性格，而非铁口直断对方星座。"], "quiz": [{"a": "建议当事人采取权杖王后开朗主动的态度去相处应对。", "q": "建议位出现权杖王后正位，该怎么给建议？"}, {"a": "周遭有人挑拨离间、散播谣言，影响了当事人的事情。", "q": "环境位出现宝剑侍者，可能代表什么？"}], "summary": "宫廷牌多半解人物：当事人、相关人或性格面；建议位看行事作风，环境位看周遭人事。", "title": "如何解宫廷牌"}, {"hook": "学理是地图，直觉是脚感；老司机两者都有，新手先顺天赋入门。", "id": "t15", "points": ["学理派：重象征理论，解牌如解题，稳定不累，缺点难跳出主流牌义。", "直觉派：看图就有感，灵感来时神准，缺点是状态差就失误连连还累。", "逻辑强者从学理入门，直觉强者从直觉入门，顺着天赋走。", "学理派练冥想开发直觉，直觉派补学理看到盲点、趋于稳定。", "大量实占后直觉会自动变强，塔罗本就是开发直觉的工具。", "最理想是两者兼备，才能成为最顶尖的解牌者。"], "quiz": [{"a": "补学理：健全的理论架构能看到盲点，让占卜水平更稳定。", "q": "一个直觉很强但常解不稳定的朋友，瓶颈期该补什么？"}], "summary": "学理派重理论稳定但中规中矩，直觉派灵感神准但依赖状态；殊途同归，两者兼备最强。", "title": "学理 vs 直觉"}, {"hook": "牌是镜子不是判官：照见局势、找出路，命运的方向盘始终在问卜者手里。", "id": "t16", "points": ["不替问卜者做决定：分析优劣给建议，路让他自己选。", "不给负面暗示：警惕自我实现预言，再差的牌也要找出对策。", "好牌也不打包票：说继续努力就没问题，别说躺着也会成功。", "解不出老实说：瞎掰会害人，可回去想想或请教他人。", "保密：未经问卜者同意，绝不外传占卜内容。", "不戏卜：测试心态、玩笑问题不占，对双方都没好处。", "三法宝持续成长：塔罗日记、个人牌义本、占卜记事簿。"], "quiz": [{"a": "不给没望了这类暗示。要说：这是不加改变的趋势，不是注定，我们来找最好的对策。", "q": "牌阵显示情况很糟，当事人追问是不是没希望了，怎么说？"}, {"a": "每天抽一张，对照当天生活记录；长期可统计牌组比例，看清自己的生活形态。", "q": "塔罗日记本建议怎么记？长期有什么用？"}], "summary": "占卜影响他人决定，须守伦理：不代做决定、不给负面暗示、保密、不戏卜，并持续复盘成长。", "title": "塔罗道德与心态"}];
 const SPREADS=[{"cards": 1, "description": "最简单的牌阵，抽一张牌直指问题核心或今日主题，适合每日练习。", "id": "s1", "name": "单张牌占卜", "positions": [{"label": "指引", "meaning": "问题核心或今日主题，一张牌说清重点"}], "when_to_use": "每日抽牌练习、快速确认一件事的关键，或牌阵前的暖身。"}, {"cards": 3, "description": "专门回答只有是或否的问题，用三张牌的正逆位数量来判定倾向。", "id": "s2", "name": "是非题牌阵", "positions": [{"label": "第一张", "meaning": "三张同看：正逆位数量决定答案倾向"}, {"label": "第二张", "meaning": "三张同看：正逆位数量决定答案倾向"}, {"label": "第三张", "meaning": "三张同看：正逆位数量决定答案倾向"}], "when_to_use": "只有Yes或No答案的问题，如该不该表白、要不要接受offer。"}, {"cards": 3, "description": "经典的时间之流牌阵，用过去、现在、未来三段看清事情的来龙去脉。", "id": "s3", "name": "圣三角", "positions": [{"label": "过去", "meaning": "已发生的事与背景，事情的起因"}, {"label": "现在", "meaning": "目前的状况与当事人处境"}, {"label": "未来", "meaning": "照现况演变下去可能的结果"}], "when_to_use": "想了解一件事的发展脉络，几乎任何问题都适用。"}, {"cards": 4, "description": "形状如利锥直指核心，先看清问题本质，再盘点资源短板，最后给出对策。", "id": "s4", "name": "直指核心牌阵", "positions": [{"label": "问题核心", "meaning": "问题的本质到底是什么"}, {"label": "障碍或短处", "meaning": "当事人的短板与阻碍"}, {"label": "对策", "meaning": "具体的解决之道"}, {"label": "资源或长处", "meaning": "可运用的长处与助力"}], "when_to_use": "遇到实际难题需要行动方案时，如借钱不还该怎么办。"}, {"cards": 5, "description": "为选择困难症设计：先定甲乙两条路，再分别看各自的近况与未来发展。", "id": "s5", "name": "二择一牌阵", "positions": [{"label": "求问者现况", "meaning": "目前求问者的状况与问题现况"}, {"label": "选甲的近况", "meaning": "选择甲之后的近未来发展"}, {"label": "选乙的近况", "meaning": "选择乙之后的近未来发展"}, {"label": "选甲的未来", "meaning": "选择甲之后的长期发展"}, {"label": "选乙的未来", "meaning": "选择乙之后的长期发展"}], "when_to_use": "二选一的抉择，如升学或就业、A工作或B工作。"}, {"cards": 5, "description": "从双方心态、相处方式、环境到结果，完整拆解一段关系。", "id": "s6", "name": "吉普赛十字", "positions": [{"label": "对方的心情", "meaning": "对方目前的心情与想法"}, {"label": "自己的状况", "meaning": "目前自己的状况"}, {"label": "相处方式", "meaning": "双方相处模式，宜采取的态度"}, {"label": "周遭环境", "meaning": "环境状况，有无情敌或阻碍"}, {"label": "关系结果", "meaning": "两人关系最后的结果"}], "when_to_use": "占卜恋爱或重要人际关系的发展。"}, {"cards": 6, "description": "把一段关系拆成六个视角：双方心态、过去现在未来、环境，一目了然。", "id": "s7", "name": "人际关系牌阵", "positions": [{"label": "我的心态", "meaning": "我对这段关系的态度"}, {"label": "对方的心态", "meaning": "对方对这段关系的态度"}, {"label": "过去", "meaning": "关系过去的背景与因素"}, {"label": "现在", "meaning": "关系目前的状况"}, {"label": "未来发展", "meaning": "关系未来的走向"}, {"label": "环境", "meaning": "周遭环境对关系的影响"}], "when_to_use": "想全面了解一段人际或感情关系的现状与走向。"}, {"cards": 10, "description": "最经典的万用大牌阵，十个位置覆盖现况、障碍、理想、过去未来与最终结果。", "id": "s8", "name": "塞尔特十字", "positions": [{"label": "问题现况", "meaning": "问题目前的核心状况"}, {"label": "障碍或援助", "meaning": "遇到的阻碍或得到的帮助"}, {"label": "理想状况", "meaning": "当事人心中的理想状态"}, {"label": "本意", "meaning": "当事人真正的想法与动机"}, {"label": "过去状况", "meaning": "问题过去的背景"}, {"label": "未来状况", "meaning": "问题未来的发展趋势"}, {"label": "你的现况", "meaning": "当事人目前的状态"}, {"label": "周围环境", "meaning": "环境对问题的影响"}, {"label": "你的愿望", "meaning": "当事人对问题的期望"}, {"label": "最后结果", "meaning": "问题的最终结果"}], "when_to_use": "复杂重要的问题需要全面剖析，时间充裕时使用。"}];
 const QUIZZES=[{"a": "宝剑三主心痛与伤害，问事业多指项目受挫、合作破裂或被言语中伤，先处理情绪再复盘。", "id": "q1", "q": "问事业发展，抽到宝剑三正位，该怎么解？", "related_card": 52, "type": "情景"}, {"a": "死神是彻底结束与放手，正位表示这段关系已走到尽头，纠缠不如好好告别迎接新生。", "id": "q2", "q": "问能不能复合，抽到死神正位，代表还有希望吗？", "related_card": 13, "type": "情景"}, {"a": "权杖八是行动迅捷、消息将至，正位表示时机正好，宜果断出手，拖延反而错失。", "id": "q3", "q": "问现在是不是跳槽的好时机，抽到权杖八正位，怎么解？", "related_card": 29, "type": "情景"}, {"a": "钱币五主财务失落与匮乏，正位提醒收紧开支、别借贷冒险，先稳住基本盘。", "id": "q4", "q": "问近期财运，抽到钱币五正位，该给什么建议？", "related_card": 68, "type": "情景"}, {"a": "圣杯二是平等真诚的结合，正位表示双方情投意合，是建立深度关系的好时机。", "id": "q5", "q": "问新认识的人能不能深交，抽到圣杯二正位，怎么解？", "related_card": 37, "type": "情景"}, {"a": "隐士主内省与钻研，正位建议沉下心独立备考，少社交多复盘，适合闭关冲刺。", "id": "q6", "q": "问考试准备，抽到隐士正位，该怎么安排复习？", "related_card": 9, "type": "情景"}, {"a": "愚人是全新开始与冒险，正位表示值得一试，但要接受不确定性，别指望一步到位。", "id": "q7", "q": "问要不要创业，抽到愚人正位，代表什么意思？", "related_card": 0, "type": "情景"}, {"a": "恋人逆位多指价值观不合或关系失衡，宜先厘清分歧，别用将就维持表面和谐。", "id": "q8", "q": "问感情现状，抽到恋人逆位，该提醒当事人注意什么？", "related_card": 6, "type": "情景"}, {"a": "建议位正位宫廷牌指行事作风：学宝剑国王冷静理性、用专业判断处理，忌感情用事。", "id": "q9", "q": "建议位抽到宝剑国王正位，当事人该怎么做？", "related_card": 63, "type": "情景"}, {"a": "节制主平衡与调和，正位建议作息规律、情绪平稳，身心检视无大碍，继续保持。", "id": "q10", "q": "做身心状况检视，抽到节制正位，怎么解？", "related_card": 14, "type": "情景"}, {"a": "战车主意志与胜利，正位表示主动出击、展现企图心，面试宜积极表现、掌控节奏。", "id": "q11", "q": "问明天面试，抽到战车正位，该给什么建议？", "related_card": 7, "type": "情景"}, {"a": "命运之轮主转机与周期变化，正位表示风口将至，宜顺势而为，但别把运气当本事。", "id": "q12", "q": "问要不要现在投资，抽到命运之轮正位，怎么解？", "related_card": 10, "type": "情景"}, {"a": "先分人物还是特质：可能是当事人浪漫多情的一面，也可能是身边出现追求者。", "id": "q13", "q": "问感情出现圣杯骑士正位，代表人物还是代表事件？", "related_card": 47, "type": "情景"}, {"a": "权杖十是负担过重，正位提醒该放手或分工了，硬扛下去会把自己压垮。", "id": "q14", "q": "问工作现状，抽到权杖十正位，该给什么建议？", "related_card": 31, "type": "情景"}, {"a": "宝剑九是深夜独自焦虑，正位表示痛苦多在内心放大，先说出来、别独自内耗。", "id": "q15", "q": "朋友分手后状态很差，抽到宝剑九正位，怎么安慰开导？", "related_card": 58, "type": "情景"}, {"a": "钱币三主专业合作与初步成果，正位表示分工明确、各展所长，合作前景不错。", "id": "q16", "q": "问跟人合伙做项目，抽到钱币三正位，靠谱吗？", "related_card": 66, "type": "情景"}, {"a": "星星主希望与疗愈，正位表示走出阴霾、重燃信心，新恋情值得期待但别急。", "id": "q17", "q": "刚结束一段糟糕的感情，问新恋情，抽到星星正位，怎么解？", "related_card": 17, "type": "情景"}, {"a": "环境位恶魔正位，多指周遭有欲望纠缠或不良诱惑，宜看清束缚、保持距离。", "id": "q18", "q": "环境位出现恶魔正位，对当事人意味着什么？", "related_card": 15, "type": "情景"}, {"a": "世界是圆满完成，正位表示搬家之事水到渠成，宜顺利收尾、迎接新阶段。", "id": "q19", "q": "问搬家是否顺利，抽到世界正位，怎么解？", "related_card": 21, "type": "情景"}, {"a": "女祭司主直觉与内在智慧，正位建议多观察少发言，相信第一感觉，答案已在心中。", "id": "q20", "q": "问学习方法，抽到女祭司正位，该怎么调整？", "related_card": 2, "type": "情景"}, {"a": "权杖对应火要素，主行动、创造与热情，是生活中的行动面。", "id": "q21", "q": "权杖牌组对应哪个要素？代表什么生活面向？", "related_card": 22, "type": "记忆"}, {"a": "5是冲突与失落：四的稳定在此瓦解，行动感情思考财务都难免动荡。", "id": "q22", "q": "数字5在数字牌中的核心含义是什么？", "related_card": 26, "type": "记忆"}, {"a": "骑士是不成熟的年轻人：精力外放、急躁莽撞，也可代表旅行。", "id": "q23", "q": "宫廷牌中骑士的关键词是什么？", "related_card": 33, "type": "记忆"}, {"a": "指正逆位的时间差异：逆位可能表示才刚开始、快要结束或事情延迟。", "id": "q24", "q": "逆位九式中时间点差异是什么意思？", "related_card": 44, "type": "记忆"}, {"a": "正常约大牌:小牌=1:2.5，大牌远超此比例则问题影响大、当事人难掌控。", "id": "q25", "q": "牌阵中大牌与小牌的正常比例约是多少？超标说明什么？", "related_card": 21, "type": "记忆"}, {"a": "侍从是小孩：好奇学习、开放探索，也代表讯息、机会与新开始。", "id": "q26", "q": "侍从在宫廷牌中象征什么角色？", "related_card": 46, "type": "记忆"}, {"a": "圣杯二是两个人平等真诚的结合；恋人是大牌，关乎价值观抉择与灵魂层面的联结。", "id": "q27", "q": "圣杯二和恋人都讲感情，差别在哪里？", "related_card": 6, "type": "辨析"}, {"a": "正位是被限制动弹不得；逆位多表示即将脱困，开始重新评估并采取行动。", "id": "q28", "q": "宝剑八正位和逆位分别怎么解？", "related_card": 57, "type": "辨析"}, {"a": "都是7的突破，但权杖七是阳性向外奋战求胜，宝剑七是艰困中用智谋求生。", "id": "q29", "q": "权杖七和宝剑七都是7，核心差异是什么？", "related_card": 28, "type": "辨析"}, {"a": "死神是自然的结束与转化；塔是突如其来的剧变，带有冲击与被迫重建的意味。", "id": "q30", "q": "死神和塔都代表剧变，有什么不同？", "related_card": 16, "type": "辨析"}];
-const IMAGES={"0": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-00.jpg", "1": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-01.jpg", "2": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-02.jpg", "3": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-03.jpg", "4": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-04.jpg", "5": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-05.jpg", "6": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-06.jpg", "7": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-07.jpg", "8": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-08.jpg", "9": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-09.jpg", "10": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-10.jpg", "11": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-11.jpg", "12": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-12.jpg", "13": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-13.jpg", "14": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-14.jpg", "15": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-15.jpg", "16": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-16.jpg", "17": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-17.jpg", "18": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-18.jpg", "19": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-19.jpg", "20": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-20.jpg", "21": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-21.jpg", "22": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-22.jpg", "23": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-23.jpg", "24": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-24.jpg", "25": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-25.jpg", "26": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-26.jpg", "27": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-27.jpg", "28": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-28.jpg", "29": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-29.jpg", "30": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-30.jpg", "31": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-31.jpg", "32": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-32.jpg", "33": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-33.jpg", "34": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-34.jpg", "35": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-35.jpg", "36": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-36.jpg", "37": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-37.jpg", "38": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-38.jpg", "39": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-39.jpg", "40": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-40.jpg", "41": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-41.jpg", "42": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-42.jpg", "43": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-43.jpg", "44": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-44.jpg", "45": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-45.jpg", "46": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-46.jpg", "47": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-47.jpg", "48": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-48.jpg", "49": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-49.jpg", "50": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-50.jpg", "51": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-51.jpg", "52": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-52.jpg", "53": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-53.jpg", "54": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-54.jpg", "55": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-55.jpg", "56": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-56.jpg", "57": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-57.jpg", "58": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-58.jpg", "59": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-59.jpg", "60": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-60.jpg", "61": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-61.jpg", "62": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-62.jpg", "63": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-63.jpg", "64": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-64.jpg", "65": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-65.jpg", "66": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-66.jpg", "67": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-67.jpg", "68": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-68.jpg", "69": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-69.jpg", "70": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-70.jpg", "71": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-71.jpg", "72": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-72.jpg", "73": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-73.jpg", "74": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-74.jpg", "75": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-75.jpg", "76": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-76.jpg", "77": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-77.jpg"};
+const IMAGES={"0": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-00.jpg", "1": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-01.jpg", "10": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-10.jpg", "11": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-11.jpg", "12": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-12.jpg", "13": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-13.jpg", "14": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-14.jpg", "15": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-15.jpg", "16": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-16.jpg", "17": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-17.jpg", "18": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-18.jpg", "19": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-19.jpg", "2": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-02.jpg", "20": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-20.jpg", "21": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-21.jpg", "22": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-22.jpg", "23": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-23.jpg", "24": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-24.jpg", "25": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-25.jpg", "26": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-26.jpg", "27": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-27.jpg", "28": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-28.jpg", "29": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-29.jpg", "3": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-03.jpg", "30": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-30.jpg", "31": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-31.jpg", "32": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-32.jpg", "33": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-33.jpg", "34": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-34.jpg", "35": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-35.jpg", "36": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-36.jpg", "37": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-37.jpg", "38": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-38.jpg", "39": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-39.jpg", "4": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-04.jpg", "40": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-40.jpg", "41": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-41.jpg", "42": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-42.jpg", "43": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-43.jpg", "44": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-44.jpg", "45": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-45.jpg", "46": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-46.jpg", "47": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-47.jpg", "48": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-48.jpg", "49": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-49.jpg", "5": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-05.jpg", "50": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-50.jpg", "51": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-51.jpg", "52": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-52.jpg", "53": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-53.jpg", "54": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-54.jpg", "55": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-55.jpg", "56": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-56.jpg", "57": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-57.jpg", "58": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-58.jpg", "59": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-59.jpg", "6": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-06.jpg", "60": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-60.jpg", "61": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-61.jpg", "62": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-62.jpg", "63": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-63.jpg", "64": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-64.jpg", "65": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-65.jpg", "66": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-66.jpg", "67": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-67.jpg", "68": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-68.jpg", "69": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-69.jpg", "7": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-07.jpg", "70": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-70.jpg", "71": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-71.jpg", "72": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-72.jpg", "73": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-73.jpg", "74": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-74.jpg", "75": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-75.jpg", "76": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-76.jpg", "77": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-77.jpg", "8": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-08.jpg", "9": "https://gitee.com/hannahzhou97/tarot-workbench/raw/master/cards/card-09.jpg"};
 </script>
 <script>
 
@@ -439,6 +441,7 @@ function openCard(id){
     <h3>牌面细节</h3><ul class="tight">${c.visual.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
     <h3>结构定位</h3><p style="font-size:14px;line-height:1.8">${esc(c.structure)}</p>
     <h3>记忆钩子</h3><p style="font-size:14px;color:var(--gold2)">✦ ${esc(c.hook)}</p>
+    <p style="color:var(--muted);font-size:12px">${c.essay?'📖 内容来源：基础牌义为八书融合提炼；深度长文提炼自《78度智慧》与《白皮书》。':'📖 内容来源：八书融合提炼（书目见牌库页）。'}</p>
     <details class="deep"><summary>▸ 详细解说（点开展开）</summary><p>${esc(c.deep)}</p></details>
     ${c.essay?`<details class="deep"><summary>▸ 深度长文 · 78度智慧 × 白皮书（点开展开）</summary>${c.essay.split(/\n+/).filter(Boolean).map(p=>`<p>${esc(p)}</p>`).join('')}</details>`:''}
     ${c.quiz.map((q,i)=>`<div class="qa" id="cq-${id}-${i}">
@@ -469,6 +472,7 @@ function openTheme(tid){
   touchDay();
   openModal(`<h2 style="color:var(--gold2)">${esc(t.title)}</h2>
     <p style="color:var(--muted);font-size:14px">${esc(t.summary)}</p>
+    <p style="color:var(--muted);font-size:12px">来源：八书融合提炼</p>
     <ul class="tight">${t.points.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
     <h3>记忆钩子</h3><p style="color:var(--gold2);font-size:14px">✦ ${esc(t.hook)}</p>
     ${t.quiz.map((q,i)=>`<div class="qa" id="tq-${tid}-${i}">

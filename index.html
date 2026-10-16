@@ -752,8 +752,9 @@ function v4Tab(btn){
   bs[i].classList.add('on');ps[i].classList.add('on');
 }
 function v4CoreText(c){
+  if(c.core) return c.core;
   const parts=String(c.deep||'').match(/[^。！？]+[。！？]/g)||[];
-  return parts.slice(0,4).join('');
+  return parts.slice(0,1).join('');
 }
 function v4Theory(c,corr){
   if(!corr)return '<div class="v4-ph">对应数据缺失</div>';

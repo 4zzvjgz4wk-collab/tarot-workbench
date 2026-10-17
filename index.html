@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
 <title>塔罗自学工作台 · 午夜星空</title>
 <style>
 :root{
@@ -28,7 +28,7 @@ header.hero p{color:var(--muted);font-size:13px;letter-spacing:.2em;margin:8px 0
 nav.tabs{position:sticky;top:0;z-index:5;display:flex;gap:4px;justify-content:center;
   background:rgba(4,8,20,.82);backdrop-filter:blur(10px);padding:10px 6px;border-bottom:1px solid var(--line);}
 nav.tabs button{flex:1;max-width:130px;background:none;border:1px solid transparent;color:var(--muted);
-  font-size:13px;padding:9px 2px;border-radius:12px;cursor:pointer;letter-spacing:.05em;}
+  font-size:13px;padding:12px 2px;border-radius:12px;cursor:pointer;letter-spacing:.05em;min-height:44px;}
 nav.tabs button.on{color:var(--gold2);border-color:var(--line);background:rgba(232,198,106,.08);
   box-shadow:0 0 14px rgba(232,198,106,.15) inset;}
 section.page{display:none;animation:fadeUp .35s ease;}
@@ -75,13 +75,13 @@ ul.tight{margin:8px 0;padding-left:20px;} ul.tight li{margin:6px 0;line-height:1
 .kw{display:inline-block;background:rgba(232,198,106,.12);border:1px solid var(--line);color:var(--gold2);
   border-radius:20px;padding:4px 12px;margin:3px;font-size:13px;}
 textarea,input[type=text]{width:100%;background:rgba(4,8,20,.6);border:1px solid var(--line);color:var(--ink);
-  border-radius:10px;padding:10px;font-size:14px;font-family:inherit;}
+  border-radius:10px;padding:10px;font-size:16px;font-family:inherit;}
 textarea{min-height:90px;resize:vertical;}
 .note-saved{color:var(--gold);font-size:12px;margin-top:6px;min-height:16px;}
 /* 牌库网格 */
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0;}
 .filters button{background:var(--panel2);border:1px solid var(--line);color:var(--muted);border-radius:20px;
-  padding:7px 14px;font-size:13px;cursor:pointer;}
+  padding:12px 16px;font-size:13px;cursor:pointer;min-height:44px;}
 .filters button.on{color:#2a1f08;background:linear-gradient(135deg,#f4dd9a,#d9a94e);border-color:transparent;font-weight:700;}
 .search{margin:10px 0;}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
@@ -94,15 +94,18 @@ textarea{min-height:90px;resize:vertical;}
 .tile .t small{display:block;color:var(--muted);font-size:11px;margin-top:2px;}
 /* 弹窗 */
 .modal{position:fixed;inset:0;z-index:20;display:none;background:rgba(2,4,12,.78);backdrop-filter:blur(4px);
-  overflow-y:auto;padding:18px 12px 40px;}
+  overflow-y:auto;overscroll-behavior:contain;padding:18px 12px 40px;}
+body.modal-open{overflow:hidden;}
+.modal-tail{height:150px;}
 .modal.on{display:block;animation:fadeUp .25s ease;}
 .sheet{max-width:640px;margin:0 auto;background:linear-gradient(180deg,#0d1533,#070c22);
   border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 20px 60px rgba(0,0,0,.6);}
 .sheet img.hero{width:min(240px,55vw);display:block;margin:6px auto;border-radius:10px;
   border:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.5);}
 .sheet img.hero.rev{transform:rotate(180deg);}
-.close{float:right;background:none;border:1px solid var(--line);color:var(--muted);border-radius:10px;
-  padding:6px 12px;cursor:pointer;font-size:13px;}
+.close{position:sticky;top:12px;z-index:8;display:block;margin:0 0 8px auto;min-height:44px;min-width:64px;
+  background:rgba(7,12,34,.94);border:1px solid var(--line);color:var(--muted);border-radius:10px;
+  padding:10px 14px;cursor:pointer;font-size:14px;}
 .badge{display:inline-block;font-size:12px;color:var(--gold2);border:1px solid var(--line);border-radius:12px;
   padding:2px 10px;margin:2px;}
 details.deep{margin:12px 0;border:1px dashed var(--line);border-radius:12px;padding:10px 12px;}
@@ -136,15 +139,15 @@ details.deep p{line-height:1.9;font-size:14px;color:var(--ink);}
 .bar{height:8px;background:rgba(232,198,106,.15);border-radius:6px;overflow:hidden;margin:8px 0;}
 .bar i{display:block;height:100%;background:linear-gradient(90deg,#d9a94e,#f4dd9a);border-radius:6px;transition:width .4s;}
 .unit{display:flex;gap:10px;align-items:center;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:8px 0;}
-.unit .cb{flex:none;width:26px;height:26px;border-radius:50%;border:1px solid var(--gold-dim);background:none;color:var(--gold2);cursor:pointer;font-size:14px;line-height:1;padding:0;}
+.unit .cb{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--gold-dim);background:none;color:var(--gold2);cursor:pointer;font-size:16px;line-height:1;padding:0;display:flex;align-items:center;justify-content:center;}
 .unit.done{opacity:.6;}
 .unit.done .un{text-decoration:line-through;}
 .unit .un{cursor:pointer;flex:1;font-size:14px;}
 .unit .meta{color:var(--muted);font-size:12px;flex:none;}
 .stage-h{display:flex;justify-content:space-between;align-items:baseline;margin-top:8px;}
 .setrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0;font-size:14px;}
-.setrow input[type=number]{width:84px;}
-select{background:rgba(4,8,20,.6);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:9px;font-size:14px;font-family:inherit;}
+.setrow input[type=number]{width:84px;font-size:16px;}
+select{background:rgba(4,8,20,.6);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:9px;font-size:16px;font-family:inherit;}
 footer{position:fixed;bottom:0;left:0;right:0;z-index:5;text-align:center;font-size:11px;color:var(--muted);
   padding:8px;background:rgba(4,8,20,.85);border-top:1px solid var(--line);letter-spacing:.1em;}
 
@@ -152,11 +155,11 @@ footer{position:fixed;bottom:0;left:0;right:0;z-index:5;text-align:center;font-s
 .v4-title{text-align:center;color:var(--gold2);letter-spacing:.1em;}
 .v4-title small{color:var(--muted);font-weight:normal;font-size:.55em;letter-spacing:.05em;}
 .v4-badges{text-align:center;margin:6px 0 2px;}
-.v4-subnav{position:sticky;top:-20px;z-index:6;display:flex;gap:6px;justify-content:center;flex-wrap:wrap;
+.v4-subnav{position:sticky;top:0;z-index:6;display:flex;gap:6px;justify-content:center;flex-wrap:wrap;
   background:rgba(7,12,34,.94);backdrop-filter:blur(8px);padding:10px 4px;margin:10px -20px 0;border-bottom:1px solid var(--line);}
-.v4-subnav a{color:var(--muted);font-size:12px;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:4px 10px;}
+.v4-subnav a{color:var(--muted);font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:10px 14px;min-height:44px;display:inline-flex;align-items:center;}
 .v4-subnav a b{color:var(--gold2);font-weight:700;margin-right:3px;}
-.v4-sec{margin:18px 0 6px;scroll-margin-top:64px;}
+.v4-sec{margin:18px 0 6px;scroll-margin-top:20px;}
 .v4-h{font-size:17px;letter-spacing:.12em;margin:0 0 10px;display:flex;align-items:baseline;gap:8px;}
 .v4-h .v4-n{font-size:12px;font-weight:700;border-radius:8px;padding:2px 8px;color:#0a1230;}
 .v4-h small{color:var(--muted);font-size:10px;letter-spacing:.25em;font-weight:normal;}
@@ -306,7 +309,7 @@ table.v4-table td.neg{color:#d8b0aa;}
 /* 二级页签 */
 .subnav{display:flex;gap:8px;justify-content:center;margin:12px 0 4px;flex-wrap:wrap;}
 .subnav button{background:rgba(232,198,106,.06);border:1px solid var(--line);color:var(--muted);
-  font-size:13px;padding:8px 20px;border-radius:20px;cursor:pointer;letter-spacing:.1em;}
+  font-size:13px;padding:12px 22px;border-radius:20px;cursor:pointer;letter-spacing:.1em;min-height:44px;}
 .subnav button.on{color:#0a1230;background:linear-gradient(135deg,#f4dd9a,#d9a94e);border-color:transparent;font-weight:700;}
 .subpage{display:none;}
 .subpage.on{display:block;animation:fadeUp .3s ease;}
@@ -321,7 +324,7 @@ table.v4-table td.neg{color:#d8b0aa;}
 .mm-node{margin:7px 0;}
 .mm-node.mm-open>.mm-kids{animation:fadeUp .25s ease;}
 .mm-row{display:flex;align-items:flex-start;gap:8px;}
-.mm-toggle{flex:none;width:28px;height:28px;cursor:pointer;color:var(--gold2);font-size:16px;
+.mm-toggle{flex:none;width:44px;height:44px;cursor:pointer;color:var(--gold2);font-size:16px;
   text-align:center;line-height:28px;border-radius:8px;user-select:none;-webkit-user-select:none;}
 .mm-toggle:active{background:rgba(232,198,106,.14);}
 .mm-arrow{display:inline-block;transition:transform .25s ease;}
@@ -335,6 +338,23 @@ table.v4-table td.neg{color:#d8b0aa;}
   font-size:12px;font-weight:700;}
 .mm-formula{border:1px solid rgba(232,198,106,.6);border-radius:12px;padding:10px 10px 4px;
   background:rgba(232,198,106,.06);box-shadow:0 0 18px rgba(232,198,106,.2);}
+
+.v46-lock{border:1px dashed var(--gold);border-radius:14px;padding:22px 16px;text-align:center;margin:14px 0;background:rgba(232,198,106,.06)}
+.v46-lock .lk{font-size:34px}
+.v46-lock h3{color:var(--gold);margin:8px 0;font-size:17px}
+.v46-lock p{color:var(--muted);font-size:13px;line-height:1.7;margin:6px 0}
+.v46-hero{text-align:center;padding:30px 18px;background:radial-gradient(ellipse at 50% 0%,rgba(232,198,106,.14),transparent 70%)}
+.v46-hero h1{font-size:24px;color:var(--gold2);margin:0 0 10px;line-height:1.5}
+.v46-hero p{color:var(--muted);font-size:14px;line-height:1.8;margin:0 0 16px}
+.v46-cmp{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+.v46-cmp th,.v46-cmp td{border-bottom:1px solid var(--line);padding:9px 6px;text-align:left;line-height:1.6}
+.v46-cmp th{color:var(--gold)}
+.v46-cmp .c{text-align:center;white-space:nowrap}
+.v46-yes{color:#9ae8b0;font-weight:700}.v46-no{color:var(--muted)}
+.v46-tag{display:inline-block;font-size:11px;border:1px solid var(--gold);color:var(--gold2);border-radius:8px;padding:1px 8px;margin-left:6px}
+.v46-sw{display:flex;align-items:center;gap:8px;margin:12px 0;font-size:13px;color:var(--muted)}
+#v46-code,#v46-code2{text-transform:uppercase;width:60%;max-width:260px}
+.v46-edok{color:#9ae8b0}.v46-edfree{color:var(--muted)}
 </style>
 </head>
 <body>
@@ -379,6 +399,14 @@ table.v4-table td.neg{color:#d8b0aa;}
 
 <section class="page on" id="p-today">
   <div class="guide-banner" onclick="goSection('start','guide')">✦ 第一次打开？先花十分钟看新手导览，一张地图看懂整副牌 →</div>
+<div class="panel v46-hero">
+  <h1 class="serif">从认牌到会解，把塔罗学成一套系统</h1>
+  <p>78 张牌逐张精讲 · 六阶段学习路径 · 练习与案例陪着练，进度看得见</p>
+  <div class="row" style="justify-content:center">
+    <button class="btn btn-gold" onclick="goSection('start','guide')">免费开始学</button>
+    <button class="btn btn-ghost" onclick="openCompare46()">看看进阶版多了什么</button>
+  </div>
+</div>
   <div class="panel" id="today-tasks">
     <h2>✦ 今日任务 ✦</h2>
     <div id="tt-body"><p style="color:var(--muted)">正在生成…</p></div>
@@ -422,9 +450,17 @@ table.v4-table td.neg{color:#d8b0aa;}
     </div>
     <div id="set-info" style="color:var(--muted);font-size:13px;line-height:1.7"></div>
   </div>
-  <div class="panel">
+  <div class="panel" id="v46-act">
+    <h2>✦ 进阶版激活 ✦</h2>
+    <div id="v46-ed" style="font-size:13px;line-height:1.7;margin-bottom:8px;color:var(--muted)"></div>
+    <div class="setrow"><input type="text" id="v46-code" placeholder="输入激活码，如 TW-XXXXXX-XXXXXX">
+      <button class="btn btn-gold btn-sm" onclick="activate46('v46-code')">激活</button>
+      <button class="btn btn-ghost btn-sm" onclick="openCompare46()">查看版本对比</button></div>
+    <p style="color:var(--muted);font-size:12px">试点期：凭激活码解锁进阶内容，激活状态保存在本机浏览器。进阶版 ¥365/年。</p>
+  </div>
+<div class="panel">
     <h2>✦ 学习路径 · 六个阶段 ✦</h2>
-    <p style="color:var(--muted);font-size:12px">本路径为工作台按八书体系编排；读书路线、获客与咨询心法等融入内容来自抖音视频蒸馏，各 panel 内已标注原视频。</p>
+    <p style="color:var(--muted);font-size:12px">本路径为工作台按阶段编排；读书路线、获客与咨询心法等融入内容来自抖音视频蒸馏，各 panel 内已标注原视频。</p>
     <div id="path-body"></div>
   </div>
 <div class="panel">
@@ -504,7 +540,7 @@ table.v4-table td.neg{color:#d8b0aa;}
   <div class="subpage" data-parent="kb" data-sub="themes">
   <div class="panel">
     <h2>✦ 主题卡 · 融会贯通 ✦</h2>
-    <p style="color:var(--muted);font-size:12px">主题内容为八书融合提炼，书目见牌库页。</p>
+    <p style="color:var(--muted);font-size:12px">主题内容为体系化提炼，书目见牌库页。</p>
     <div id="theme-list"></div>
   </div>
   </div>
@@ -543,7 +579,7 @@ table.v4-table td.neg{color:#d8b0aa;}
   <div class="subpage" data-parent="practice" data-sub="cases">
   <div class="panel" id="case-lib">
     <h2>✦ 案例库 · 练习案例 ✦</h2>
-    <p style="color:var(--muted);font-size:12px;line-height:1.7">10 个原创练习案例（虚构示意），练的是"先扫结构、再逐张、最后串联"的解读流程——和导览第六站的方法一致。每张牌的详情页第 05 段会自动列出含这张牌的案例。真实占卜案例待网盘资料蒸馏后加入。</p>
+    <p style="color:var(--muted);font-size:12px;line-height:1.7">16 个原创练习案例（虚构示意），练的是"先扫结构、再逐张、最后串联"的解读流程——和导览第六站的方法一致。每张牌的详情页第 05 段会自动列出含这张牌的案例。真实占卜案例待网盘资料蒸馏后加入。</p>
     <div class="filters" id="case-filters">
       <button data-c="all" class="on" onclick="caseFilter(this,'all')">全部</button>
       <button onclick="caseFilter(this,'感情')">感情</button>
@@ -551,6 +587,8 @@ table.v4-table td.neg{color:#d8b0aa;}
       <button onclick="caseFilter(this,'选择')">选择</button>
       <button onclick="caseFilter(this,'学业')">学业</button>
       <button onclick="caseFilter(this,'综合')">综合</button>
+      <button onclick="caseFilter(this,'家庭')">家庭</button>
+      <button onclick="caseFilter(this,'健康')">健康</button>
     </div>
     <div id="case-list"></div>
   </div>
@@ -583,19 +621,28 @@ const img=id=>IMAGES[id];
 const card=id=>CARDS[id];
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
 const suitName={wands:'权杖',cups:'圣杯',swords:'宝剑',pentacles:'钱币'};
-function openModal(html){$('#sheet').innerHTML='<button class="close" onclick="closeModal()">关闭 ✕</button>'+html;$('#modal').classList.add('on');$('#modal').scrollTop=0;}
-function closeModal(){$('#modal').classList.remove('on');}
-$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal();});
+var TAB_SCROLL={};
+function openModal(html){
+  $('#modal').innerHTML='<div class="sheet" id="sheet"><button class="close" onclick="closeModal()">关闭 ✕</button>'+html+'</div><div class="modal-tail"></div>';
+  $('#modal').classList.add('on');$('#modal').scrollTop=0;document.body.classList.add('modal-open');
+}
+function closeModal(){$('#modal').classList.remove('on');document.body.classList.remove('modal-open');}
+$('#modal').addEventListener('click',function(e){if(!e.target.closest('#sheet'))closeModal();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&$('#modal').classList.contains('on'))closeModal();});
 /* 导航 */
 $('#tabs').addEventListener('click',e=>{
   const b=e.target.closest('button');if(!b)return;
+  const cur=document.querySelector('#tabs button.on');
+  const same=(cur===b);
+  if(cur)TAB_SCROLL[cur.dataset.p]=window.scrollY;
   $$('#tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
   $$('section.page').forEach(x=>x.classList.remove('on'));
   $('#p-'+b.dataset.p).classList.add('on');
   if(b.dataset.p==='path')renderPath();
   if(b.dataset.p==='today'){renderTodayTasks();renderStarTrack();}
   if(b.dataset.p==='practice')updateMistCount();
-  window.scrollTo({top:0,behavior:'smooth'});
+  if(same||typeof TAB_SCROLL[b.dataset.p]!=='number')window.scrollTo({top:0,behavior:'smooth'});
+  else window.scrollTo({top:TAB_SCROLL[b.dataset.p]});
 });
 /* ============ 二级导航 ============ */
 var SUB_DEFAULT={start:'guide',path:'path',kb:'deck',practice:'field'};
@@ -823,6 +870,112 @@ function v4SecHead(i){
   return '<h3 class="v4-h"><span class="v4-n" style="background:'+d[3]+'">'+d[0]+'</span>'+d[1]+'<small>'+d[2]+'</small></h3>';
 }
 // ==V4-END==
+/* ===== v4.6 免费/进阶分层＋激活码（试点） ===== */
+const PRO_HASHES=["5ef368834a7e5347469d0309accfc5f0634c58a1e6f0693ae54ee802df56f09f","3b23d5caee01ece97edbbc1beae51698497ad77d2361edfb9249000efbe84801","7ecc6968c1f64406fa1b888a54c0c780d0c150ed31fa473611c93578d1a94881","b9f3d3d59822723bd3c6807eea24562a0ffb44db90caf975657672c21679d82d","b235499ddab4b009948dcd2d8c6bca094fa378d607a614488d798bcf568bbc46","baf1b5dec2fa1edfbe4eeacc4e29213eb4fa91f834023c2ee441be8843c84854","bdf3b1324d3470b810486433c7d1f06e61521896683a736d5bc033e2d2df4e75","561f6e37d35d55905aef28efc339213bd01769c7165d01f8c055ab716df2a0f6","9c4ee660a74d9cca686252cc4e061e7e85682a55f126afa87509b25667fbd611","887392b035c499c832f2a5e380189dabc299e6ab6ac11a01ce45ab044eff3707","31460f513967e0255dcf2f6e3fbab57f5645d3f8991bdd286b8ae4949785f002","6c1227bf2946798f715afc83e2817f819a006d4b7ec26dfdf318be58e6bd6b37","5baf1408ae08a5f8609c9fc50436784cc907b59aa33f2e33eeb387e15bd7ad77","eec7a455f69a9733bd70995f33dee5e25e6a4710cd7d83eae8e0b8b9c3505de7","e2c0c307a71ff00bf627bcb512c80f1c93d194aa9422baa874d26a1b99ced8c9","0a30881754a7dfb9b6db7a1694c33faf8b71edf9306ff85f253d93c937179baf","d51b606c6804a6989eff11bd193a439760bc487d34e17a2021174bcb7fe55de2","237f0f4e44c6184fc6cc0751e97c2d2bea797a43126ec5828e1bac429a85e279","39affb652dd69383eb8acda31e9ab5331cf1afa0bdc8b45886a231754a94a0fb","415fa18d77f1a81cc441e8bee1a9145d631299c64477f912c2fada4479f70e47"];
+const PRO_THEMES=['t2','t3','t8','t11','t13','t14','t15','t16','t17'];
+const PRO_CASES_N=3;
+var v46PreviewFree=false;
+function isPro(){return store.get('edition','free')==='pro';}
+function ed46(){return isPro()&&!v46PreviewFree;}
+function v46LockCard(title,why){
+  return '<div class="v46-lock"><div class="lk">\uD83D\uDD12</div><h3>进阶版内容</h3>'
+  +'<p><b>'+esc(title)+'</b><br>'+esc(why)+'</p>'
+  +'<button class="btn btn-gold btn-sm" onclick="closeModal();openCompare46();">看看进阶版多了什么</button></div>';
+}
+function v46Sha256Fallback(str){
+  function R(n,x){return (x>>>n)|(x<<(32-n));}
+  var K=[0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+  0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+  0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+  0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+  0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+  0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+  0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+  0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+  var H=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+  var b=unescape(encodeURIComponent(str)),ml=b.length,i;
+  var bl=new Array((((ml+9)>>6)+1)*16);
+  for(i=0;i<bl.length;i++)bl[i]=0;
+  for(i=0;i<ml;i++)bl[i>>2]|=b.charCodeAt(i)<<(24-(i%4)*8);
+  bl[ml>>2]|=0x80<<(24-(ml%4)*8);bl[bl.length-1]=ml*8;
+  var W=new Array(64),a,bb2,c,d,e,f,g,h,t1,t2;
+  for(var j=0;j<bl.length;j+=16){
+    for(i=0;i<64;i++){
+      if(i<16){W[i]=bl[j+i];}
+      else{var s0=R(7,W[i-15])^R(18,W[i-15])^(W[i-15]>>>3),s1=R(17,W[i-2])^R(19,W[i-2])^(W[i-2]>>>10);W[i]=(W[i-16]+s0+W[i-7]+s1)|0;}
+    }
+    a=H[0];bb2=H[1];c=H[2];d=H[3];e=H[4];f=H[5];g=H[6];h=H[7];
+    for(i=0;i<64;i++){
+      var S1=R(6,e)^R(11,e)^R(25,e),ch=(e&f)^(~e&g),tt1=(h+S1+ch+K[i]+W[i])|0,
+          S0=R(2,a)^R(13,a)^R(22,a),mj=(a&bb2)^(a&c)^(bb2&c),tt2=(S0+mj)|0;
+      h=g;g=f;f=e;e=(d+tt1)|0;d=c;c=bb2;bb2=a;a=(tt1+tt2)|0;
+    }
+    var n=[a,bb2,c,d,e,f,g,h];
+    for(i=0;i<8;i++)H[i]=(H[i]+n[i])|0;
+  }
+  return H.map(function(x){return ('00000000'+(x>>>0).toString(16)).slice(-8);}).join('');
+}
+async function v46Sha256Hex(s){
+  try{
+    if(window.crypto&&crypto.subtle){
+      var d=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));
+      return Array.from(new Uint8Array(d)).map(function(x){return ('0'+x.toString(16)).slice(-2);}).join('');
+    }
+  }catch(e){}
+  return v46Sha256Fallback(s);
+}
+async function activate46(id){
+  var inp=document.getElementById(id||'v46-code');
+  if(!inp){alert('找不到输入框');return;}
+  var code=(inp.value||'').trim().toUpperCase();
+  if(!/^TW-[A-Z0-9]{6}-[A-Z0-9]{6}$/.test(code)){alert('激活码格式不对，应为 TW-XXXXXX-XXXXXX');return;}
+  var h=await v46Sha256Hex(code);
+  if(PRO_HASHES.indexOf(h)>=0){
+    store.set('edition','pro');
+    alert('激活成功！进阶版内容已解锁。');
+    renderEd46();renderThemes();renderCases();
+    if(document.getElementById('modal').classList.contains('on'))openCompare46();
+  }else{alert('激活码无效，请检查后重试。');}
+}
+function renderEd46(){
+  var el=document.getElementById('v46-ed');if(!el)return;
+  if(isPro())el.innerHTML='<span class="v46-edok">\u2726 当前版本：进阶版（已激活）</span> 全部进阶内容已解锁。';
+  else el.innerHTML='当前版本：<b>免费版</b> —— 进阶主题 9 篇、案例库其余 13 个、单牌页深度三段为进阶内容，激活后解锁。';
+}
+const V46_CMP=[
+ {n:'牌库 · 78 张牌核心涵义＋快速索引',f:1,p:1},
+ {n:'牌库 · 单牌页深度三段（理论推导 / 场景应用 / 拓展认知）',f:0,p:1},
+ {n:'主题 · 8 篇基础主题',f:1,p:1},
+ {n:'主题 · 另 9 篇进阶主题',f:0,p:1},
+ {n:'案例库 · 3 个练习案例',f:1,p:1},
+ {n:'案例库 · 其余 13 个案例',f:0,p:1},
+ {n:'练习场基础区',f:1,p:1},
+ {n:'云端同步（账号＋进度跨设备）',f:0,p:0,note:'二期上线'},
+ {n:'入门导览 / 全景导图 / 学习路径 / 牌阵 8 个',f:1,p:1}
+];
+function v46TogglePreview(on){v46PreviewFree=!!on;openCompare46();}
+function openCompare46(){
+  var pro=ed46(); // 展示态：免费预览开关打开时按免费版视角渲染，真实激活状态不受影响
+  var rows=V46_CMP.map(function(r){
+    var f=r.f?'<span class="v46-yes">\u2713</span>':'<span class="v46-no">—</span>';
+    var p;
+    if(r.p){p='<span class="v46-yes">\u2713</span>'+(pro?' <span class="v46-tag">已解锁</span>':'');}
+    else{p=r.note?'<span class="v46-no">'+esc(r.note)+'</span>':'<span class="v46-no">—</span>';}
+    return '<tr><td>'+esc(r.n)+'</td><td class="c">'+f+'</td><td class="c">'+p+'</td></tr>';
+  }).join('');
+  var banner=v46PreviewFree?'<p style="color:var(--gold2);font-size:13px">\uD83D\uDC41 当前为免费版视角预览（仅展示状态），你的进阶版激活不受影响。</p>':'';
+  openModal('<h2 class="v4-title serif">免费版 vs 进阶版</h2>'+banner
+   +'<table class="v46-cmp"><tr><th>功能</th><th class="c">免费版</th><th class="c">进阶版</th></tr>'+rows+'</table>'
+   +'<div class="v46-sw"><input type="checkbox" id="v46-pv"'+(v46PreviewFree?' checked':'')+' onchange="v46TogglePreview(this.checked)">'
+   +'<label for="v46-pv">以免费版视角预览（仅展示用，不清除激活状态）</label></div>'
+   +'<h3 style="color:var(--gold);font-size:15px">进阶版 \uFFE5365/年</h3>'
+   +(pro&&!v46PreviewFree?'<p class="v46-edok">\u2726 已激活，进阶内容全部可用。</p>'
+     :'<div class="setrow"><input type="text" id="v46-code2" placeholder="输入激活码，如 TW-XXXXXX-XXXXXX">'
+      +'<button class="btn btn-gold btn-sm" onclick="activate46(\'v46-code2\')">激活</button></div>'
+      +'<p style="color:var(--muted);font-size:12px">试点期：输入激活码即可解锁，激活状态保存在本机浏览器。</p>')
+  );
+}
+
 /* ===== v41 视觉加密 ===== */
 const THEME_EN={t1:'THREE LAYERS OF MEANING',t2:'SIX MEMORY METHODS',t3:'NINE REVERSED READINGS',t4:'MAJOR VS MINOR',t5:'FIVE ELEMENTS · FOUR SUITS',t6:"THE FOOL'S JOURNEY",t7:'NUMBERS 1-10',t8:'COURT STRUCTURE',t9:'ASKING GOOD QUESTIONS',t10:'THE READING FLOW',t11:'READING SECRETS',t12:'SPREAD GUIDE',t13:'TIMING TIPS',t14:'READING COURTS',t15:'STUDY VS INTUITION',t16:'ETHICS & MINDSET',t17:'DEEP ANALYSIS'};
 const THEME_ART={t1:[0,1,9,15,21],t2:[0,1,3,13,15],t3:[10,13,15,16,20],t4:[0,22,10,50],t5:[22,36,50,64,0],t6:[0,10,21],t7:[22,25,28,31],t8:[32,46,60,74],t9:[1,2,9,11],t10:[1,7,8,14],t11:[10,11,14,17],t12:[10,14,17,21],t13:[10,18,19,20],t14:[32,47,60,75],t15:[2,9,8,17],t16:[8,9,11,14],t17:[1, 2, 11, 20]};
@@ -904,7 +1057,7 @@ function startFlipMem(){
     <div class="t41-flip" style="width:min(200px,48vw)" onclick="this.classList.add('on');document.getElementById('flipm-a').style.display=''">
       <div class="t41-fcard">
         <div class="t41-face t41-back"><div class="t41-back-in">✦<br><small>心里默猜牌名和牌义<br>点我翻开</small></div></div>
-        <div class="t41-face t41-front"><img src="${img(id)}"></div>
+        <div class="t41-face t41-front"><img src="${img(id)}" onclick="event.stopPropagation();openCard(${id})" style="cursor:pointer" alt="点我查看牌义详情"></div>
       </div></div>
     <div id="flipm-a" style="display:none;margin-top:10px">
       <h3>${c.name_cn}</h3>
@@ -931,21 +1084,21 @@ function flipMemRate(id,ok){
 }
 
 
-function openCard(id){
+function openCard(id,rev){
   const c=card(id);
   const studied=store.get('studied',[]);
   if(!studied.includes(id)){studied.push(id);store.set('studied',studied);}
   touchDay();
   const corr=v4Corr(id);
   openModal(
-    '<h2 class="v4-title serif">'+c.name_cn+' <small>'+c.name_en+'</small></h2>'
+    '<h2 class="v4-title serif">'+c.name_cn+' <small>'+c.name_en+'</small>'+(rev?' <span class="badge">逆位</span>':'')+'</h2>'
     +'<div class="v4-badges">'+v4Badges(c,corr)+'</div>'
     +'<div class="v4-subnav">'+V4_SEC_DEF.map((d,i)=>'<a href="#v4s'+(i+1)+'"><b>'+d[0]+'</b>'+d[1]+'</a>').join('')+'</div>'
     // 01 快速索引（含画面图解）
     +'<section class="v4-sec" id="v4s1">'+v4SecHead(0)
     +'<div class="v4-oneliner serif">“'+esc(c.hook)+'”</div>'
     +'<div class="v4-kws">'+c.keywords.map(k=>'<span class="kw">'+k+'</span>').join('')+'</div>'
-    +'<div class="v4-visual"><img class="hero" src="'+img(id)+'" alt="'+c.name_cn+'">'
+    +'<div class="v4-visual"><img class="hero'+(rev?' rev':'')+'" src="'+img(id)+'" alt="'+c.name_cn+(rev?'(逆位)':'')+'">'
     +'<ol class="v4-vlist">'+c.visual.map((x,i)=>'<li><span class="v4-vi">'+(i+1)+'</span>'+esc(x)+'</li>').join('')+'</ol></div></section>'
     // 02 核心涵义
     +'<section class="v4-sec" id="v4s2">'+v4SecHead(1)
@@ -954,22 +1107,22 @@ function openCard(id){
     +(c.essay?'<details class="deep"><summary>▸ 深度长文 · 78度智慧 × 白皮书（点开展开）</summary>'+c.essay.split(/\n+/).filter(Boolean).map(p=>'<p>'+esc(p)+'</p>').join('')+'</details>':'')
     +'</section>'
     // 03 理论推导
-    +'<section class="v4-sec" id="v4s3">'+v4SecHead(2)+v4Theory(c,corr)+'</section>'
+    +'<section class="v4-sec" id="v4s3">'+v4SecHead(2)+(!ed46()?v46LockCard('理论推导','元素、星座、数字与占星的深层推导是进阶内容。'):v4Theory(c,corr))+'</section>'
     // 04 场景应用
-    +'<section class="v4-sec" id="v4s4">'+v4SecHead(3)+v4Scenes(c)+'</section>'
+    +'<section class="v4-sec" id="v4s4">'+v4SecHead(3)+(!ed46()?v46LockCard('场景应用','五领域正向 / 负向表现表是进阶内容。'):v4Scenes(c))+'</section>'
     // 05 实占案例（占位）
     +'<section class="v4-sec" id="v4s5">'+v4SecHead(4)
     +'<p style="color:var(--muted);font-size:12px">当前案例来源：练习案例 · 虚构示意（真实占卜案例待网盘资料蒸馏后加入）。点任意案例看完整解读。</p>'
     +v4CasesFor(id)+'</section>'
     // 06 拓展认知
-    +'<section class="v4-sec" id="v4s6">'+v4SecHead(5)
-    +'<div class="v4-cols"><div class="v4-col up"><h4>正位</h4><ul class="tight">'+c.upright.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div>'
+    +'<section class="v4-sec" id="v4s6">'+v4SecHead(5)+(!ed46()?v46LockCard('拓展认知','正逆位全表、结构定位与记忆钩子是进阶内容。'):
+    '<div class="v4-cols"><div class="v4-col up"><h4>正位</h4><ul class="tight">'+c.upright.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div>'
     +'<div class="v4-col dn"><h4>逆位</h4><ul class="tight">'+c.reversed.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div></div>'
     +'<h4 style="color:var(--gold);font-size:14px;margin:12px 0 6px">结构定位</h4><p style="font-size:14px;line-height:1.8">'+esc(c.structure)+'</p>'
     +'<h4 style="color:var(--gold);font-size:14px;margin:12px 0 6px">记忆钩子</h4><p style="font-size:14px;color:var(--gold2)">✦ '+esc(c.hook)+'</p>'
     +c.quiz.map((q,i)=>'<div class="qa" id="cq-'+id+'-'+i+'"><p><b>练习 '+(i+1)+'：</b>'+esc(q.q)+'</p>'
       +'<button class="btn btn-ghost btn-sm" onclick="document.getElementById(\'cq-'+id+'-'+i+'\').classList.toggle(\'open\')">看参考答案</button>'
-      +'<div class="a">'+esc(q.a)+'</div></div>').join('')
+      +'<div class="a">'+esc(q.a)+'</div></div>').join(''))
     +'<div class="row" style="margin:14px 0 4px"><button class="btn '+(unitDone('c'+id)?'btn-gold':'btn-ghost')+' btn-sm" id="unit-btn" onclick="toggleUnit(\'c'+id+'\')">'+(unitDone('c'+id)?'✓ 已学完（点撤销）':'标记这张为已学完')+'</button></div>'
     +'<h4 style="color:var(--gold);font-size:14px;margin:12px 0 6px">我的笔记</h4>'
     +'<textarea id="note-'+id+'" placeholder="记下你的理解、联想、实占心得…"></textarea>'
@@ -988,8 +1141,11 @@ function saveNote(id){
 
 /* ============ 主题 ============ */
 function renderThemes(){
-  $('#theme-list').innerHTML=THEMES.map(t=>`<div class="list-item" onclick="openTheme('${t.id}')">
-    <b>${esc(t.title)}</b><div class="sub">${esc(t.summary)}</div></div>`).join('');
+  $('#theme-list').innerHTML=THEMES.map(t=>{
+    const locked=PRO_THEMES.indexOf(t.id)>=0&&!ed46();
+    return `<div class="list-item" onclick="openTheme('${t.id}')">`
+    +(locked?'<span class="badge">\uD83D\uDD12 进阶</span> ':'')
+    +`<b>${esc(t.title)}</b><div class="sub">${esc(t.summary)}</div></div>`;}).join('');
 }
 const THEME_EXAMPLE={t1:'比如看恶魔牌：表层"被欲望捆绑"是走到哪都认的共通牌义；深层的摩羯座、锁链象征是理论推导；"他是不是被这段关系绑住了"才是读进具体问题。三层叠着用，牌义既有根又有弹性。',t2:'与其背书，不如挑让你"哦——"的一张：看到正义就记一句"出来混是要还的（因果）"，看到塔就记"别建在沙上"。六法是路子，记忆的钩子得是自己的——有共鸣的才记得久。',t3:'感情里抽到恋人逆位，先别急着断"要分"：按九式逐一过——是受阻（沟通卡住）、过度（太黏），还是转向内里（其实在问自己要什么）？再结合整局其他牌定。',t4:'连续抽到节制、高塔、星星三张大牌，事情就不按月计了：这是以"年"为单位的大课题在动。先按大牌定调——格局、周期、心态；再让小牌告诉你这个月具体发生什么。',t5:'问"该不该接这个外包"，抽到权杖八、星币四、圣杯二：先别逐张查——火旺（行动已在路上）、土有但攥得紧（钱要先说死）、水是合作（对方合拍）。大方向先立住：能接，先把钱和交付讲清。',t6:'抽到倒吊人别急着解"等待"：先看它站在旅程第 12 站——正好是中段转折点，从"向外闯"切换到"向内看"。牌义是这张牌的坐标决定的，不是背出来的。',t7:'同一局里出现圣杯三、宝剑三、权杖三：数字都是 3，三件事都站在"初长"这一步——成果刚冒头、还没站稳，只是分别发生在感情、沟通和行动里。',t8:'问"新来的主管好相处吗"，抽到宝剑国王：国王是掌控全场的成熟者，宝剑是理性与规则——好消息是他讲道理、按规则来；坏消息是别指望他讲人情。人物解先定角色，再套花色。',t9:'"我今年会不会升职"改成"要升职，我接下来三个月最该补什么"：前者是宿命题，牌只能点头摇头；后者给了牌"能改变"的余地，答案才有行动价值。问题问法，决定了答案的含金量。',t10:'给朋友占感情，先别洗牌：先问"你到底想知道什么——是去是留，还是他怎么想"？问题没锁死就抽牌，抽出来十张也串不成故事。流程的第一步永远在牌之外。',t11:'一局七张里大牌占了四张：先别一张张读——比例已经说话了：这件事当事人能掌控的部分不多，先把"顺势而为"的调子定下来，再看小牌里有没有可操作的具体动作。',t12:'问"选 A 公司还是 B 公司"，别用圣三角瞎套：二择一牌阵就是为这种题生的——甲乙未来并排摆，差距一目了然。牌阵不对，解读全是无用功。',t13:'"我什么时候能买房"先改成"一年内买房的阻力和助力是什么"：塔罗对"哪天"的回答本来就模糊，但对"条件成熟了没"的判断很准。问趋势，不问日期。',t14:'抽到圣杯王后，先别当"一个女人"：先判断是人物还是状态——如果是问事业的他自己，王后更像"最近在靠感受做事、需要滋养"的状态；先分人物与事件，再谈细节。',t15:'学了对应表（星座、元素）后，抽到恶魔先过一遍摩羯座的推导，再看一眼牌面那两条锁链——学理给骨架，直觉给血肉。只背理论会僵，只凭感觉会飘，两手都要。',t16:'朋友抽到死神问"要不要分手"，别说"牌说分"：把牌翻成选择题——"现在的模式已经走到头了，继续是耗，断开是新生，你更怕哪一个？"决定永远是她的，你只负责把路照亮。',t17:'解一局凯尔特十字：先确认这题配十字阵没错（步骤一）；再扫一眼花色——宝剑扎堆，事情卡在沟通层（步骤二）；最后别背书，把"他最近说话总被误解"这句人话放进牌里（步骤三）。'};
 const THEME_MAP={t1:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t2:{g:'top',text:'贯穿六站 · 学习法'},t3:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t4:{g:'g1',text:'导览第 1 站 · 全家福'},t5:{g:'g3',text:'导览第 3 站 · 四花色'},t6:{g:'g2',text:'导览第 2 站 · 大牌线'},t7:{g:'g4',text:'导览第 4 站 · 数字 1–10'},t8:{g:'g5',text:'导览第 5 站 · 宫廷牌'},t9:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t10:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t11:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t12:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t13:{g:'g6',text:'导览第 6 站 · 一局牌怎么读 · 应用'},t14:{g:'g5',text:'导览第 5 站 · 宫廷牌'},t15:{g:'g-end',text:'地图之外 · 心法'},t16:{g:'g-end',text:'地图之外 · 心法'},t17:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'}};
@@ -1022,6 +1178,10 @@ function t44ThemeNav(tid){
 }
 function openTheme(tid){
   const t=THEMES.find(x=>x.id===tid);
+  if(PRO_THEMES.indexOf(tid)>=0&&!ed46()){
+    openModal('<h2 class="v4-title serif">主题</h2>'+v46LockCard(t.title,'这篇是进阶主题，激活进阶版后可阅读全文。'));
+    return;
+  }
   const studied=store.get('studiedT',[]);
   if(!studied.includes(tid)){studied.push(tid);store.set('studiedT',studied);}
   touchDay();
@@ -1077,7 +1237,7 @@ function startFlash(){
   flashState={id,rev};
   $('#practice-box').innerHTML=`
     <div style="text-align:center">
-      <img class="${rev?'rev':''}" style="width:min(200px,48vw);border-radius:10px;border:1px solid var(--line)" src="${img(id)}">
+      <img class="${rev?'rev':''}" style="width:min(200px,48vw);border-radius:10px;border:1px solid var(--line);cursor:pointer" src="${img(id)}" onclick="openCard(flashState.id,flashState.rev)" alt="点我查看牌义详情">
       <p style="color:var(--muted)">看着这张牌${rev?'（逆位）':''}，说出它的关键词和牌义，然后翻答案。</p>
       <div class="row" style="justify-content:center"><button class="btn btn-gold btn-sm" onclick="flashAnswer()">翻开答案</button></div>
       <div id="flash-a"></div>
@@ -1105,7 +1265,7 @@ function startCombo(n){
   const ids=[...Array(78).keys()].sort(()=>Math.random()-.5).slice(0,n);
   const revs=ids.map(()=>Math.random()<.3);
   $('#practice-box').innerHTML=`
-    <div class="row" style="justify-content:center">${ids.map((id,i)=>`<img class="${revs[i]?'rev':''}" style="width:110px;border-radius:8px;border:1px solid var(--line)" src="${img(id)}">`).join('')}</div>
+    <div class="row" style="justify-content:center">${ids.map((id,i)=>`<img class="${revs[i]?'rev':''}" style="width:110px;border-radius:8px;border:1px solid var(--line);cursor:pointer" src="${img(id)}" onclick="openCard(${id},${revs[i]})" alt="点我查看牌义详情">`).join('')}</div>
     <p style="color:var(--muted)">把这 ${n} 张牌${revs.some(Boolean)?'（注意逆位）':''}编成一个连贯的故事，或解读它们之间的关系。写下来，再对照思路提示。</p>
     <textarea id="combo-text" placeholder="写下你的解读…"></textarea>
     <div class="row" style="margin-top:8px"><button class="btn btn-ghost btn-sm" onclick="comboHint([${ids}],[${revs}])">看思路提示</button></div>
@@ -1133,6 +1293,7 @@ function startQuiz(){
     <textarea id="quiz-a" placeholder="写下你的答案…"></textarea>
     <div class="row" style="margin-top:8px"><button class="btn btn-gold btn-sm" onclick="quizAnswer()">看参考答案</button></div>
     <div class="a" style="margin-top:10px">${esc(q.a)}</div>
+    <div class="row" style="margin-top:8px"><button class="btn btn-ghost btn-sm" onclick="openCard(${q.related_card})">查看这张牌 · ${esc(card(q.related_card).name_cn)}</button></div>
     <div class="row" style="margin-top:8px;justify-content:center">
       <button class="btn btn-ghost btn-sm" onclick="quizRate(true)">我答对了</button>
       <button class="btn btn-ghost btn-sm mist" onclick="quizRate(false)">答错了 → 错题本</button>
@@ -1187,7 +1348,7 @@ function drawSpreadPos(i){
   let id;do{id=Math.floor(Math.random()*78);}while(used.has(id));
   st.drawn[i]=id;st.revs[i]=Math.random()<.3;
   const c=card(id),p=st.s.positions[i];
-  $('#sp-'+i).innerHTML=`<img class="${st.revs[i]?'rev':''}" src="${img(id)}">
+  $('#sp-'+i).innerHTML=`<img class="${st.revs[i]?'rev':''}" src="${img(id)}" onclick="openCard(${id},${st.revs[i]})" style="cursor:pointer" alt="点我查看牌义详情">
     <div style="font-size:13px;margin-top:6px"><b>${c.name_cn}</b> ${st.revs[i]?'(逆位)':''}<br>
     <small style="color:var(--muted)">${i+1}. ${esc(p.label)}：${esc(p.meaning)}</small></div>
     <div style="margin-top:4px">${c.keywords.slice(0,3).map(k=>`<span class="kw">${k}</span>`).join('')}</div>`;
@@ -1208,7 +1369,8 @@ function renderCases(){
   var list=CASES.filter(function(c){return caseCat==='all'||c.cat===caseCat;});
   $('#case-list').innerHTML=list.map(function(c){
     var s=SPREADS.find(function(x){return x.id===c.spread_id;});
-    return '<div class="list-item" onclick="openCase(\''+c.id+'\')"><b>'+esc(c.title)+'</b> <span class="badge">'+esc(c.cat)+'</span><div class="sub">'+esc(s.name)+' · '+c.cards.length+' 张</div>'
+    var locked=CASES.indexOf(c)>=PRO_CASES_N&&!ed46();
+    return '<div class="list-item" onclick="openCase(\''+c.id+'\')">'+(locked?'<span class="badge">\uD83D\uDD12 进阶</span> ':'')+'<b>'+esc(c.title)+'</b> <span class="badge">'+esc(c.cat)+'</span><div class="sub">'+esc(s.name)+' · '+c.cards.length+' 张</div>'
     +'<div class="t44-case-thumbs">'+c.cards.map(function(k){return '<img loading="lazy" class="'+(k.rev?'rev':'')+'" src="'+img(k.id)+'">';}).join('')+'</div></div>';
   }).join('');
 }
@@ -1227,6 +1389,10 @@ function v4CasesFor(id){
 }
 function openCase(cid){
   var c=CASES.find(function(x){return x.id===cid;});
+  if(CASES.indexOf(c)>=PRO_CASES_N&&!ed46()){
+    openModal('<h2 class="v4-title serif">案例库</h2>'+v46LockCard(c.title,'这个案例是进阶内容，激活进阶版后可查看完整解读。'));
+    return;
+  }
   var s=SPREADS.find(function(x){return x.id===c.spread_id;});
   touchDay();
   openModal('<h2 class="v4-title serif">'+esc(c.title)+' <small>'+esc(c.cat)+'</small></h2>'
@@ -1525,7 +1691,7 @@ function renderMindmap(){
 }
 
 /* ============ 初始化 ============ */
-renderDeck();renderThemes();renderSpreads();renderCases();renderDaily();updateMistCount();renderTodayTasks();renderPath();renderStarTrack();renderGuide();renderMindmap();
+renderDeck();renderThemes();renderSpreads();renderCases();renderDaily();updateMistCount();renderTodayTasks();renderPath();renderStarTrack();renderGuide();renderMindmap();renderEd46();
 /* v4.2 hero 牌扇 */
 (function(){
   const fan=document.getElementById('fan');if(!fan||typeof IMAGES==='undefined')return;

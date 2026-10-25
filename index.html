@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="referrer" content="no-referrer">
-<title>塔罗自学工作台 · 午夜星空</title>
+<title>塔罗自学工作台 v4.7 · 午夜星空</title>
 <style>
 :root{
   --bg0:#040814; --bg1:#0a1230; --panel:rgba(15,23,52,.78); --panel2:rgba(22,32,68,.6);
   --gold:#e8c66a; --gold2:#f4dd9a; --gold-dim:#9a7d3c;
-  --ink:#edf0f8; --muted:#9aa3c7; --line:rgba(232,198,106,.22);
+  --ink:#edf0f8; --muted:#edf0f8; --line:rgba(232,198,106,.22);
   --red:#e0685c;
 }
 *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
@@ -404,6 +404,9 @@ table.v4-table td.neg{color:#d8b0aa;}
   <p>78 张牌逐张精讲 · 六阶段学习路径 · 练习与案例陪着练，进度看得见</p>
   <div class="row" style="justify-content:center">
     <button class="btn btn-gold" onclick="goSection('start','guide')">免费开始学</button>
+    <button class="btn btn-ghost" onclick="playOnce()">先玩一次：抽一张牌</button>
+    <button class="btn btn-ghost" onclick="toggleBeginner()">新手模式：<span id="beg-label">开</span>（点我切换）</button>
+    <button class="btn btn-ghost" onclick="shareProgress()">进度分享：生成进度码</button>
     <button class="btn btn-ghost" onclick="openCompare46()">看看进阶版多了什么</button>
   </div>
 </div>
@@ -579,7 +582,7 @@ table.v4-table td.neg{color:#d8b0aa;}
   <div class="subpage" data-parent="practice" data-sub="cases">
   <div class="panel" id="case-lib">
     <h2>✦ 案例库 · 练习案例 ✦</h2>
-    <p style="color:var(--muted);font-size:12px;line-height:1.7">16 个原创练习案例（虚构示意），练的是"先扫结构、再逐张、最后串联"的解读流程——和导览第六站的方法一致。每张牌的详情页第 05 段会自动列出含这张牌的案例。真实占卜案例待网盘资料整理后加入。</p>
+    <p style="color:var(--muted);font-size:12px;line-height:1.7">41 个原创练习案例（虚构示意），练的是"先扫结构、再逐张、最后串联"的解读流程——和导览第六站的方法一致。每张牌的详情页第 05 段会自动列出含这张牌的案例。真实占卜案例待网盘资料整理后加入。</p>
     <div class="filters" id="case-filters">
       <button data-c="all" class="on" onclick="caseFilter(this,'all')">全部</button>
       <button onclick="caseFilter(this,'感情')">感情</button>
@@ -608,6 +611,7 @@ table.v4-table td.neg{color:#d8b0aa;}
 
 <script src="data-a.js"></script>
 <script src="data-b.js"></script>
+<script src="data-c.js"></script>
 <script>
 
 /* ============ 基础 ============ */
@@ -768,7 +772,7 @@ const V4_SEC_DEF=[['01','快速索引','QUICK INDEX','#e8c66a'],['02','核心涵
   ['03','理论推导','DERIVATION','#8fb8ff'],['04','场景应用','SCENARIOS','#d49ae8'],
   ['05','实占案例','CASES','#e8a09a'],['06','拓展认知','EXPAND','#9ae8b0']];
 function v4Corr(id){return (typeof CORR!=='undefined'&&CORR.cards[String(id)])||null;}
-function v4Scene(id){return (typeof SCENES!=='undefined'&&SCENES[String(id)])||null;}
+function v4Scene(id){return (typeof SCENES!=='undefined'&&SCENES[String(id)])||(typeof SCENES_MINOR!=='undefined'&&SCENES_MINOR[String(id)])||null;}
 function v4Badges(c,corr){
   const b=[];
   if(corr){
@@ -872,7 +876,7 @@ function v4SecHead(i){
 // ==V4-END==
 /* ===== v4.6 免费/进阶分层＋激活码（试点） ===== */
 const PRO_HASHES=["5ef368834a7e5347469d0309accfc5f0634c58a1e6f0693ae54ee802df56f09f","3b23d5caee01ece97edbbc1beae51698497ad77d2361edfb9249000efbe84801","7ecc6968c1f64406fa1b888a54c0c780d0c150ed31fa473611c93578d1a94881","b9f3d3d59822723bd3c6807eea24562a0ffb44db90caf975657672c21679d82d","b235499ddab4b009948dcd2d8c6bca094fa378d607a614488d798bcf568bbc46","baf1b5dec2fa1edfbe4eeacc4e29213eb4fa91f834023c2ee441be8843c84854","bdf3b1324d3470b810486433c7d1f06e61521896683a736d5bc033e2d2df4e75","561f6e37d35d55905aef28efc339213bd01769c7165d01f8c055ab716df2a0f6","9c4ee660a74d9cca686252cc4e061e7e85682a55f126afa87509b25667fbd611","887392b035c499c832f2a5e380189dabc299e6ab6ac11a01ce45ab044eff3707","31460f513967e0255dcf2f6e3fbab57f5645d3f8991bdd286b8ae4949785f002","6c1227bf2946798f715afc83e2817f819a006d4b7ec26dfdf318be58e6bd6b37","5baf1408ae08a5f8609c9fc50436784cc907b59aa33f2e33eeb387e15bd7ad77","eec7a455f69a9733bd70995f33dee5e25e6a4710cd7d83eae8e0b8b9c3505de7","e2c0c307a71ff00bf627bcb512c80f1c93d194aa9422baa874d26a1b99ced8c9","0a30881754a7dfb9b6db7a1694c33faf8b71edf9306ff85f253d93c937179baf","d51b606c6804a6989eff11bd193a439760bc487d34e17a2021174bcb7fe55de2","237f0f4e44c6184fc6cc0751e97c2d2bea797a43126ec5828e1bac429a85e279","39affb652dd69383eb8acda31e9ab5331cf1afa0bdc8b45886a231754a94a0fb","415fa18d77f1a81cc441e8bee1a9145d631299c64477f912c2fada4479f70e47"];
-const PRO_THEMES=['t2','t3','t8','t11','t13','t14','t15','t16','t17'];
+const PRO_THEMES=['t2','t3','t8','t11','t13','t14','t15','t16','t17','t18','t20','t21','t22','t23','t24','t25'];
 const PRO_CASES_N=3;
 var v46PreviewFree=false;
 function isPro(){return store.get('edition','free')==='pro';}
@@ -940,18 +944,18 @@ async function activate46(id){
 function renderEd46(){
   var el=document.getElementById('v46-ed');if(!el)return;
   if(isPro())el.innerHTML='<span class="v46-edok">\u2726 当前版本：进阶版（已激活）</span> 全部进阶内容已解锁。';
-  else el.innerHTML='当前版本：<b>免费版</b> —— 进阶主题 9 篇、案例库其余 13 个、单牌页深度三段为进阶内容，激活后解锁。';
+  else el.innerHTML='当前版本：<b>免费版</b> —— 进阶主题 16 篇、案例库其余 38 个、单牌页深度三段为进阶内容，激活后解锁。';
 }
 const V46_CMP=[
  {n:'牌库 · 78 张牌核心涵义＋快速索引',f:1,p:1},
  {n:'牌库 · 单牌页深度三段（理论推导 / 场景应用 / 拓展认知）',f:0,p:1},
- {n:'主题 · 8 篇基础主题',f:1,p:1},
- {n:'主题 · 另 9 篇进阶主题',f:0,p:1},
+ {n:'主题 · 9 篇基础主题',f:1,p:1},
+ {n:'主题 · 另 16 篇进阶主题',f:0,p:1},
  {n:'案例库 · 3 个练习案例',f:1,p:1},
- {n:'案例库 · 其余 13 个案例',f:0,p:1},
+ {n:'案例库 · 其余 38 个案例',f:0,p:1},
  {n:'练习场基础区',f:1,p:1},
  {n:'云端同步（账号＋进度跨设备）',f:0,p:0,note:'二期上线'},
- {n:'入门导览 / 全景导图 / 学习路径 / 牌阵 8 个',f:1,p:1}
+ {n:'入门导览 / 全景导图 / 学习路径 / 牌阵 19 个',f:1,p:1}
 ];
 function v46TogglePreview(on){v46PreviewFree=!!on;openCompare46();}
 function openCompare46(){
@@ -977,8 +981,8 @@ function openCompare46(){
 }
 
 /* ===== v41 视觉加密 ===== */
-const THEME_EN={t1:'THREE LAYERS OF MEANING',t2:'SIX MEMORY METHODS',t3:'NINE REVERSED READINGS',t4:'MAJOR VS MINOR',t5:'FIVE ELEMENTS · FOUR SUITS',t6:"THE FOOL'S JOURNEY",t7:'NUMBERS 1-10',t8:'COURT STRUCTURE',t9:'ASKING GOOD QUESTIONS',t10:'THE READING FLOW',t11:'READING SECRETS',t12:'SPREAD GUIDE',t13:'TIMING TIPS',t14:'READING COURTS',t15:'STUDY VS INTUITION',t16:'ETHICS & MINDSET',t17:'DEEP ANALYSIS'};
-const THEME_ART={t1:[0,1,9,15,21],t2:[0,1,3,13,15],t3:[10,13,15,16,20],t4:[0,22,10,50],t5:[22,36,50,64,0],t6:[0,10,21],t7:[22,25,28,31],t8:[32,46,60,74],t9:[1,2,9,11],t10:[1,7,8,14],t11:[10,11,14,17],t12:[10,14,17,21],t13:[10,18,19,20],t14:[32,47,60,75],t15:[2,9,8,17],t16:[8,9,11,14],t17:[1, 2, 11, 20]};
+const THEME_EN={t1:'THREE LAYERS OF MEANING',t2:'SIX MEMORY METHODS',t3:'NINE REVERSED READINGS',t4:'MAJOR VS MINOR',t5:'FIVE ELEMENTS · FOUR SUITS',t6:"THE FOOL'S JOURNEY",t7:'NUMBERS 1-10',t8:'COURT STRUCTURE',t9:'ASKING GOOD QUESTIONS',t10:'THE READING FLOW',t11:'READING SECRETS',t12:'SPREAD GUIDE',t13:'TIMING TIPS',t14:'READING COURTS',t15:'STUDY VS INTUITION',t16:'ETHICS & MINDSET',t17:'DEEP ANALYSIS',t18:'LISTEN FIRST, THEN READ',t19:'SAFETY FIRST, THEN READ',t20:'FIVE LOVE LANGUAGES',t21:'LOVE AS A CRAFT',t22:'OMNIPOTENCE IN INTIMACY',t23:'WHOSE PROBLEM IS IT',t24:'HAVING OR BEING',t25:'WHAT ARE NIGHT CALLERS ASKING'};
+const THEME_ART={t1:[0,1,9,15,21],t2:[0,1,3,13,15],t3:[10,13,15,16,20],t4:[0,22,10,50],t5:[22,36,50,64,0],t6:[0,10,21],t7:[22,25,28,31],t8:[32,46,60,74],t9:[1,2,9,11],t10:[1,7,8,14],t11:[10,11,14,17],t12:[10,14,17,21],t13:[10,18,19,20],t14:[32,47,60,75],t15:[2,9,8,17],t16:[8,9,11,14],t17:[1, 2, 11, 20],t18:[2,9,11,14],t19:[9,14,17,20],t20:[6,37,40],t21:[6,14,17],t22:[15,6,9],t23:[11,8,14],t24:[68,64,21],t25:[9,18,13]};
 const STAGE_ART=[[0,1],[0,21],[22,31],[32,35],[13,15],[10,14]];
 function t41ArtStrip(ids){
   return '<div class="t41-artrow">'+ids.map(id=>{const c=card(id);
@@ -1117,7 +1121,7 @@ function openCard(id,rev){
     // 06 拓展认知
     +'<section class="v4-sec" id="v4s6">'+v4SecHead(5)+(!ed46()?v46LockCard('拓展认知','正逆位全表、结构定位与记忆钩子是进阶内容。'):
     '<div class="v4-cols"><div class="v4-col up"><h4>正位</h4><ul class="tight">'+c.upright.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div>'
-    +'<div class="v4-col dn"><h4>逆位</h4><ul class="tight">'+c.reversed.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div></div>'
+    +(isBeginner()?'<p style="color:var(--muted);font-size:13px">新手模式已隐藏逆位，关掉新手模式可查看。</p>':'<div class="v4-col dn"><h4>逆位</h4><ul class="tight">'+c.reversed.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div>')+'</div>'
     +'<h4 style="color:var(--gold);font-size:14px;margin:12px 0 6px">结构定位</h4><p style="font-size:14px;line-height:1.8">'+esc(c.structure)+'</p>'
     +'<h4 style="color:var(--gold);font-size:14px;margin:12px 0 6px">记忆钩子</h4><p style="font-size:14px;color:var(--gold2)">✦ '+esc(c.hook)+'</p>'
     +c.quiz.map((q,i)=>'<div class="qa" id="cq-'+id+'-'+i+'"><p><b>练习 '+(i+1)+'：</b>'+esc(q.q)+'</p>'
@@ -1147,8 +1151,8 @@ function renderThemes(){
     +(locked?'<span class="badge">\uD83D\uDD12 进阶</span> ':'')
     +`<b>${esc(t.title)}</b><div class="sub">${esc(t.summary)}</div></div>`;}).join('');
 }
-const THEME_EXAMPLE={t1:'比如看恶魔牌：表层"被欲望捆绑"是走到哪都认的共通牌义；深层的摩羯座、锁链象征是理论推导；"他是不是被这段关系绑住了"才是读进具体问题。三层叠着用，牌义既有根又有弹性。',t2:'与其背书，不如挑让你"哦——"的一张：看到正义就记一句"出来混是要还的（因果）"，看到塔就记"别建在沙上"。六法是路子，记忆的钩子得是自己的——有共鸣的才记得久。',t3:'感情里抽到恋人逆位，先别急着断"要分"：按九式逐一过——是受阻（沟通卡住）、过度（太黏），还是转向内里（其实在问自己要什么）？再结合整局其他牌定。',t4:'连续抽到节制、高塔、星星三张大牌，事情就不按月计了：这是以"年"为单位的大课题在动。先按大牌定调——格局、周期、心态；再让小牌告诉你这个月具体发生什么。',t5:'问"该不该接这个外包"，抽到权杖八、钱币四、圣杯二：先别逐张查——火旺（行动已在路上）、土有但攥得紧（钱要先说死）、水是合作（对方合拍）。大方向先立住：能接，先把钱和交付讲清。',t6:'抽到倒吊人别急着解"等待"：先看它站在旅程第 12 站——正好是中段转折点，从"向外闯"切换到"向内看"。牌义是这张牌的坐标决定的，不是背出来的。',t7:'同一局里出现圣杯三、宝剑三、权杖三：数字都是 3，三件事都站在"初长"这一步——成果刚冒头、还没站稳，只是分别发生在感情、沟通和行动里。',t8:'问"新来的主管好相处吗"，抽到宝剑国王：国王是掌控全场的成熟者，宝剑是理性与规则——好消息是他讲道理、按规则来；坏消息是别指望他讲人情。人物解先定角色，再套花色。',t9:'"我今年会不会升职"改成"要升职，我接下来三个月最该补什么"：前者是宿命题，牌只能点头摇头；后者给了牌"能改变"的余地，答案才有行动价值。问题问法，决定了答案的含金量。',t10:'给朋友占感情，先别洗牌：先问"你到底想知道什么——是去是留，还是他怎么想"？问题没锁死就抽牌，抽出来十张也串不成故事。流程的第一步永远在牌之外。',t11:'一局七张里大牌占了四张：先别一张张读——比例已经说话了：这件事当事人能掌控的部分不多，先把"顺势而为"的调子定下来，再看小牌里有没有可操作的具体动作。',t12:'问"选 A 公司还是 B 公司"，别用圣三角瞎套：二择一牌阵就是为这种题生的——甲乙未来并排摆，差距一目了然。牌阵不对，解读全是无用功。',t13:'"我什么时候能买房"先改成"一年内买房的阻力和助力是什么"：塔罗对"哪天"的回答本来就模糊，但对"条件成熟了没"的判断很准。问趋势，不问日期。',t14:'抽到圣杯王后，先别当"一个女人"：先判断是人物还是状态——如果是问事业的他自己，王后更像"最近在靠感受做事、需要滋养"的状态；先分人物与事件，再谈细节。',t15:'学了对应表（星座、元素）后，抽到恶魔先过一遍摩羯座的推导，再看一眼牌面那两条锁链——学理给骨架，直觉给血肉。只背理论会僵，只凭感觉会飘，两手都要。',t16:'朋友抽到死神问"要不要分手"，别说"牌说分"：把牌翻成选择题——"现在的模式已经走到头了，继续是耗，断开是新生，你更怕哪一个？"决定永远是她的，你只负责把路照亮。',t17:'解一局凯尔特十字：先确认这题配十字阵没错（步骤一）；再扫一眼花色——宝剑扎堆，事情卡在沟通层（步骤二）；最后别背书，把"他最近说话总被误解"这句人话放进牌里（步骤三）。'};
-const THEME_MAP={t1:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t2:{g:'top',text:'贯穿六站 · 学习法'},t3:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t4:{g:'g1',text:'导览第 1 站 · 全家福'},t5:{g:'g3',text:'导览第 3 站 · 四花色'},t6:{g:'g2',text:'导览第 2 站 · 大牌线'},t7:{g:'g4',text:'导览第 4 站 · 数字 1–10'},t8:{g:'g5',text:'导览第 5 站 · 宫廷牌'},t9:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t10:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t11:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t12:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t13:{g:'g6',text:'导览第 6 站 · 一局牌怎么读 · 应用'},t14:{g:'g5',text:'导览第 5 站 · 宫廷牌'},t15:{g:'g-end',text:'地图之外 · 心法'},t16:{g:'g-end',text:'地图之外 · 心法'},t17:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'}};
+const THEME_EXAMPLE={t1:'比如看恶魔牌：表层"被欲望捆绑"是走到哪都认的共通牌义；深层的摩羯座、锁链象征是理论推导；"他是不是被这段关系绑住了"才是读进具体问题。三层叠着用，牌义既有根又有弹性。',t2:'与其背书，不如挑让你"哦——"的一张：看到正义就记一句"出来混是要还的（因果）"，看到塔就记"别建在沙上"。六法是路子，记忆的钩子得是自己的——有共鸣的才记得久。',t3:'感情里抽到恋人逆位，先别急着断"要分"：按九式逐一过——是受阻（沟通卡住）、过度（太黏），还是转向内里（其实在问自己要什么）？再结合整局其他牌定。',t4:'连续抽到节制、高塔、星星三张大牌，事情就不按月计了：这是以"年"为单位的大课题在动。先按大牌定调——格局、周期、心态；再让小牌告诉你这个月具体发生什么。',t5:'问"该不该接这个外包"，抽到权杖八、钱币四、圣杯二：先别逐张查——火旺（行动已在路上）、土有但攥得紧（钱要先说死）、水是合作（对方合拍）。大方向先立住：能接，先把钱和交付讲清。',t6:'抽到倒吊人别急着解"等待"：先看它站在旅程第 12 站——正好是中段转折点，从"向外闯"切换到"向内看"。牌义是这张牌的坐标决定的，不是背出来的。',t7:'同一局里出现圣杯三、宝剑三、权杖三：数字都是 3，三件事都站在"初长"这一步——成果刚冒头、还没站稳，只是分别发生在感情、沟通和行动里。',t8:'问"新来的主管好相处吗"，抽到宝剑国王：国王是掌控全场的成熟者，宝剑是理性与规则——好消息是他讲道理、按规则来；坏消息是别指望他讲人情。人物解先定角色，再套花色。',t9:'"我今年会不会升职"改成"要升职，我接下来三个月最该补什么"：前者是宿命题，牌只能点头摇头；后者给了牌"能改变"的余地，答案才有行动价值。问题问法，决定了答案的含金量。',t10:'给朋友占感情，先别洗牌：先问"你到底想知道什么——是去是留，还是他怎么想"？问题没锁死就抽牌，抽出来十张也串不成故事。流程的第一步永远在牌之外。',t11:'一局七张里大牌占了四张：先别一张张读——比例已经说话了：这件事当事人能掌控的部分不多，先把"顺势而为"的调子定下来，再看小牌里有没有可操作的具体动作。',t12:'问"选 A 公司还是 B 公司"，别用圣三角瞎套：二择一牌阵就是为这种题生的——甲乙未来并排摆，差距一目了然。牌阵不对，解读全是无用功。',t13:'"我什么时候能买房"先改成"一年内买房的阻力和助力是什么"：塔罗对"哪天"的回答本来就模糊，但对"条件成熟了没"的判断很准。问趋势，不问日期。',t14:'抽到圣杯王后，先别当"一个女人"：先判断是人物还是状态——如果是问事业的他自己，王后更像"最近在靠感受做事、需要滋养"的状态；先分人物与事件，再谈细节。',t15:'学了对应表（星座、元素）后，抽到恶魔先过一遍摩羯座的推导，再看一眼牌面那两条锁链——学理给骨架，直觉给血肉。只背理论会僵，只凭感觉会飘，两手都要。',t16:'朋友抽到死神问"要不要分手"，别说"牌说分"：把牌翻成选择题——"现在的模式已经走到头了，继续是耗，断开是新生，你更怕哪一个？"决定永远是她的，你只负责把路照亮。',t17:'解一局凯尔特十字：先确认这题配十字阵没错（步骤一）；再扫一眼花色——宝剑扎堆，事情卡在沟通层（步骤二）；最后别背书，把"他最近说话总被误解"这句人话放进牌里（步骤三）。',t18:'来访者说“他总是不回消息”，先别急着翻牌定性：先复述他原话里的事实（“上周发了三条，只回了一条”），再问他当时的感受和想要的，最后把牌面建议落成一句能说出口的请求。',t19:'来访者讲到一段很难的经历时，先别追问细节：先说清这局只做探索不做治疗、她随时可以停，再谈牌面；安全感没回来之前，解读再准也接不住。',t20:'她说“他根本不爱我”，先别顺着判：先问两人平时怎么表达爱——一个总送礼物、一个总想一起待着，爱语对不上，牌面再甜也解释不了这句“不爱”。',t21:'问“他爱不爱我”之前，先换个问题：这段关系里关怀、责任、尊重、了解，哪一项最近缺席了？牌面按这四项去读，答案就从“爱不爱”变成了“缺什么、补什么”。',t22:'对方位置出现只索取不回应的牌意时，先帮来访者命名：她要的可能不是一次沟通，而是一个随叫随到的全能照顾者；看清这一点，关系牌才读得下去。',t23:'关系要不要继续，是问卜者的课题；塔罗师的课题是把牌面、依据和可能路径讲清，不替她做决定，也不靠拯救感把自己绑进这段关系。',t24:'问钱先问一句：如果明天这笔钱没了，你是难过一阵，还是觉得自己整个人都不成立了？前者是缺钱，后者是把自我价值押在了占有物上，牌面读法完全不同。',t25:'深夜来问的人，表面问“他会不会回来”，底下常在问更根本的事：我会不会一直一个人、我的选择有没有意义？先听出底下那层，再看牌面怎么回应。',};
+const THEME_MAP={t1:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t2:{g:'top',text:'贯穿六站 · 学习法'},t3:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t4:{g:'g1',text:'导览第 1 站 · 全家福'},t5:{g:'g3',text:'导览第 3 站 · 四花色'},t6:{g:'g2',text:'导览第 2 站 · 大牌线'},t7:{g:'g4',text:'导览第 4 站 · 数字 1–10'},t8:{g:'g5',text:'导览第 5 站 · 宫廷牌'},t9:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t10:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t11:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t12:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t13:{g:'g6',text:'导览第 6 站 · 一局牌怎么读 · 应用'},t14:{g:'g5',text:'导览第 5 站 · 宫廷牌'},t15:{g:'g-end',text:'地图之外 · 心法'},t16:{g:'g-end',text:'地图之外 · 心法'},t17:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t18:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t19:{g:'g-end',text:'地图之外 · 心法'},t20:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t21:{g:'g-end',text:'地图之外 · 心法'},t22:{g:'g6',text:'导览第 6 站 · 一局牌怎么读'},t23:{g:'g-end',text:'地图之外 · 心法'},t24:{g:'g-end',text:'地图之外 · 心法'},t25:{g:'g-end',text:'地图之外 · 心法'},};
 function t44Lead(x){
   var i=x.indexOf('：'),j=x.indexOf('——'),k=-1,ln=0;
   if(i>=0){k=i;ln=1;}
@@ -1293,6 +1297,7 @@ function startQuiz(){
     <textarea id="quiz-a" placeholder="写下你的答案…"></textarea>
     <div class="row" style="margin-top:8px"><button class="btn btn-gold btn-sm" onclick="quizAnswer()">看参考答案</button></div>
     <div class="a" style="margin-top:10px">${esc(q.a)}</div>
+    ${q.why?'<div style="margin-top:8px"><b>为什么这样解：</b>'+esc(q.why)+'</div>':''}
     <div class="row" style="margin-top:8px"><button class="btn btn-ghost btn-sm" onclick="openCard(${q.related_card})">查看这张牌 · ${esc(card(q.related_card).name_cn)}</button></div>
     <div class="row" style="margin-top:8px;justify-content:center">
       <button class="btn btn-ghost btn-sm" onclick="quizRate(true)">我答对了</button>
@@ -1319,9 +1324,10 @@ function showMistakes(){
 function dropMist(i){const m=store.get('mistakes',[]);m.splice(i,1);store.set('mistakes',m);showMistakes();updateMistCount();}
 
 /* ============ 牌阵 ============ */
+function diffTag(n){return n<=1?'单张':n<=3?'三张':'多张';}
 function renderSpreads(){
   $('#spread-list').innerHTML=SPREADS.map(s=>`<div class="list-item" onclick="playSpread('${s.id}')">
-    <b>${esc(s.name)}</b> <span class="badge">${s.cards} 张</span>
+    <b>${esc(s.name)}</b> <span class="badge">${s.cards} 张</span> <span class="badge">${diffTag(s.cards)}</span>
     <div class="sub">${esc(s.when_to_use)}</div></div>`).join('');
 }
 let spreadState=null;
@@ -1370,7 +1376,7 @@ function renderCases(){
   $('#case-list').innerHTML=list.map(function(c){
     var s=SPREADS.find(function(x){return x.id===c.spread_id;});
     var locked=CASES.indexOf(c)>=PRO_CASES_N&&!ed46();
-    return '<div class="list-item" onclick="openCase(\''+c.id+'\')">'+(locked?'<span class="badge">\uD83D\uDD12 进阶</span> ':'')+'<b>'+esc(c.title)+'</b> <span class="badge">'+esc(c.cat)+'</span><div class="sub">'+esc(s.name)+' · '+c.cards.length+' 张</div>'
+    return '<div class="list-item" onclick="openCase(\''+c.id+'\')">'+(locked?'<span class="badge">\uD83D\uDD12 进阶</span> ':'')+'<b>'+esc(c.title)+'</b> <span class="badge">'+esc(c.cat)+'</span><div class="sub">'+esc(s.name)+' · '+c.cards.length+' 张 · '+diffTag(c.cards.length)+'</div>'
     +'<div class="t44-case-thumbs">'+c.cards.map(function(k){return '<img loading="lazy" class="'+(k.rev?'rev':'')+'" src="'+img(k.id)+'">';}).join('')+'</div></div>';
   }).join('');
 }
@@ -1529,13 +1535,23 @@ function renderPath(){
       +sg.units.map(unitRow).join('');
   }).join('');
 }
+function isBeginner(){var b=store.get('beginner',null);return b===null?true:!!b;}
+function toggleBeginner(){store.set('beginner',!isBeginner());location.reload();}
+function playOnce(){var id=Math.floor(Math.random()*78);var c=card(id);
+openModal('<h2 class="v4-title serif">先玩一次 · '+esc(c.name_cn)+'</h2>'
++'<div class="v4-oneliner serif">“'+esc(c.hook)+'”</div>'
++'<p style="font-size:14px;line-height:1.8">'+esc(c.core)+'</p>'
++'<p style="color:var(--muted);font-size:13px">不用背牌义，先记住这一句。想继续学，去新手导览走一圈。</p>'
++'<div class="row" style="justify-content:center"><button class="btn btn-gold" onclick="goSection(\'start\',\'guide\')">去新手导览 →</button></div>');}
+function shareProgress(){var st=pathStats();var done=allUnits().filter(function(u){return unitDone(u.key)&&!unitLocked(u);});var keys=done.map(function(u){return u.key;});var code='TAO47-'+st.done+'/'+st.n+'（'+st.pct+'%）';code+=keys.length?(' · 已学完：'+keys.join(',')):' · 尚未完成单元';openModal('<h2 class="v4-title serif">进度分享 · 进度码</h2>'+'<p style="font-size:14px;line-height:1.8">已完成 '+st.done+'/'+st.n+' 个单元（'+st.pct+'%）。把下面这串码粘给 Muse，Muse 就能知道你学到哪了，不用口头报进度。</p>'+'<textarea id="share-code" readonly style="min-height:110px">'+code+'</textarea>'+'<div class="row" style="justify-content:center;margin-top:10px"><button class="btn btn-gold" id="share-copy-btn" onclick="copyShareCode()">复制进度码</button><button class="btn btn-ghost" onclick="closeModal()">关闭</button></div>');}
+function copyShareCode(){var el=document.getElementById('share-code');if(!el)return;el.select();try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(el.value);}else{document.execCommand('copy');}}catch(e){}var b=document.getElementById('share-copy-btn');if(b)b.textContent='已复制，去粘给 Muse 吧';}
 function renderTodayTasks(){
   const box=$('#tt-body');if(!box)return;
   const s=getSettings(),st=pathStats();
   if(!st.left){box.innerHTML='<p style="color:var(--gold2)">学习路径全部完成。可以自由复习错题本、重读深度长文，或用牌阵练手。</p>';return;}
   const rest=allUnits().filter(u=>!unitDone(u.key));
   const picks=[];let sum=0;
-  for(const u of rest){if(picks.length&&sum>=s.mins)break;picks.push(u);sum+=u.mins;}
+  for(const u of rest){if(isBeginner()&&picks.length>=1)break;if(!isBeginner()&&picks.length&&sum>=s.mins)break;picks.push(u);sum+=u.mins;}
   box.innerHTML=`<p style="color:var(--muted);font-size:13px;margin-top:0">总进度 ${st.pct}%（${st.done}/${st.n} 单元）· ${etaText()}</p>`
     +picks.map(unitRow).join('')
     +`<p style="color:var(--muted);font-size:12px">今日合计约 ${sum} 分钟（按你设置的 ${s.mins} 分钟/天）。点单元打开学习，点左侧圆圈打勾。想调整节奏，去「路径」页改设置。</p>`;
@@ -1608,6 +1624,11 @@ function renderGuide(){
      '一局牌不是牌义的拼盘，而是一个回答：问题是题面，牌阵是题型，抽出来的牌是证据。先扫证据的总体面貌——大牌多还是小牌多、花色往哪边倒、逆位集中在谁身上；再逐张读，每张都回答同一个问题：它在这道题里扮演什么角色；最后串成一句话，能讲明白“发生了什么、为什么、接下来往哪走”，这局牌就算读完了。',
      '一局牌逆位占了大半，第一反应应该是？','先别慌着说“全是坏牌”——先看能量卡在哪：是整体受阻，还是某几张过头了。',
      '<button class="btn btn-ghost btn-sm" onclick="openTheme(\'t17\')">主题《深度分析三件套》</button><button class="btn btn-ghost btn-sm" onclick="goSection(\'practice\',\'cases\');setTimeout(function(){var e=document.getElementById(\'case-lib\');if(e)e.scrollIntoView({behavior:\'smooth\'});},150)">案例库 · 看实例 →</button><button class="btn btn-ghost btn-sm" onclick="goSection(\'kb\',\'spread\')">牌阵页 →</button><button class="btn btn-ghost btn-sm" onclick="goSection(\'practice\',\'field\')">练习页 →</button>')
+   +guideStation('g7','七','提问三件事：先问对，再抽牌','ASK FIRST · THREE THINGS','问题问法，决定了答案的含金量。',
+     '<div class="row" style="justify-content:center"><button class="btn btn-ghost btn-sm" onclick="openTheme(\'t9\')">主题《如何问一个好问题》 →</button><button class="btn btn-ghost btn-sm" onclick="openTheme(\'t10\')">主题《占卜流程》 →</button></div>',
+     '抽牌前先过三件事：① 你到底想知道什么——是去是留，还是他怎么想，问题没锁死就抽牌，抽出来十张也串不成故事；② 把宿命题改成行动题——“我今年会不会升职”改成“接下来三个月最该补什么”，牌才有能改变的余地；③ 先定牌阵再抽牌，牌阵就是提问的结构，阵不对，解读全是无用功。这三件事也是阶段一的必修内容。',
+     '“他到底爱不爱我”这个问题，直接抽牌好不好？','不好。先改成能行动的问题，比如“这段关系里最近缺了什么、我接下来可以怎么做”，再选牌阵抽牌。',
+     '<button class="btn btn-ghost btn-sm" onclick="openTheme(\'t9\')">深挖：主题《如何问一个好问题》 →</button><button class="btn btn-ghost btn-sm" onclick="openTheme(\'t10\')">深挖：主题《占卜流程》 →</button>')
    +'<div class="panel" id="g-end" style="text-align:center"><h2>✦ 地图看完了，剩下的就是走路 ✦</h2>'
    +'<p class="guide-story">路径页的六个阶段，正是按这张地图的顺序排的：先框架、再大牌、再数字、再宫廷、再进阶、最后实战——你随时可以从导览跳回任何一篇主题深挖。</p>'
    +'<button class="btn btn-gold" onclick="goSection(\'path\',\'path\')">去看学习路径 →</button><button class="btn btn-ghost btn-sm" onclick="goSection(\'start\',\'map\')" style="margin-left:8px">看全景图收官 →</button></div>';
@@ -1696,7 +1717,7 @@ function renderMindmap(){
 }
 
 /* ============ 初始化 ============ */
-renderDeck();renderThemes();renderSpreads();renderCases();renderDaily();updateMistCount();renderTodayTasks();renderPath();renderStarTrack();renderGuide();renderMindmap();renderEd46();
+renderDeck();renderThemes();renderSpreads();renderCases();renderDaily();updateMistCount();renderTodayTasks();renderPath();renderStarTrack();renderGuide();renderMindmap();renderEd46();var _bl=document.getElementById('beg-label');if(_bl)_bl.textContent=isBeginner()?'开':'关';
 /* v4.2 hero 牌扇 */
 (function(){
   const fan=document.getElementById('fan');if(!fan||typeof IMAGES==='undefined')return;
